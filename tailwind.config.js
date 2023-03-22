@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -9,7 +10,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ['var(--font-roboto-mono)', ...fontFamily.mono]
+      },
+      colors: {
+        'primary-bg': '#1f1f1f',
+        'secondary-bg': '#09cdda',
+      }
+    },
   },
   plugins: [],
 }
