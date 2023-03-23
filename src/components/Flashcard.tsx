@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
+
+/**
+ * A skeleton for the structure of the flashcard.
+ * 
+ * @returns the flashcard
+ */
 export default function Flashcard() {
 
-    // State for flip
+    // State for flip (true/false)
     const [flip, setFlip] = useState(false);
 
+    // Handle click on the flashcard
     function handleOnClick() {
         setFlip(!flip);
     }
 
     return (
-            <div className='h-[650px] w-[450px]'>
+            <div className='h-[600px] w-[450px]'>
                 <div className={`relative h-full w-full rounded-xl shadow-xl p-4 transition-all ease-in-out delay-100 hover:scale-105 duration-500 hover:cursor-pointer [transform-style:preserve-3d]`} onClick={() => handleOnClick()}>
                     <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl ${flip ? '[transform:rotateY(180deg)] duration-500 ' : ''}`}>
                         <div className='flex min-h-full min-w-full rounded-xl flex-col items-center justify-center text-center text-black bg-slate-100'>
@@ -29,6 +36,8 @@ export default function Flashcard() {
 
 
 
+
+// Code to flip by hover if ever needed
 
 // <div className='group h-[650px] w-[450px] [perspective:1000px]'>
 //     <div className='relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]'>
