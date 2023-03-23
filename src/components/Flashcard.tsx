@@ -11,13 +11,13 @@ export default function Flashcard() {
 
     return (
             <div className='h-[650px] w-[450px]'>
-                <div className={`relative h-full w-full rounded-xl shadow-xl p-4 transition-all ease-in-out delay-100 hover:scale-105 duration-500 hover:cursor-pointer [transform-style:preserve-3d] `} onClick={() => handleOnClick()}>
-                    <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl ${flip ? '[transform:rotateY(180deg)] duration-500' : ''}`}>
+                <div className={`relative h-full w-full rounded-xl shadow-xl p-4 transition-all ease-in-out delay-100 hover:scale-105 duration-500 hover:cursor-pointer [transform-style:preserve-3d]`} onClick={() => handleOnClick()}>
+                    <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl ${flip ? '[transform:rotateY(180deg)] duration-500 ' : ''}`}>
                         <div className='flex min-h-full min-w-full rounded-xl flex-col items-center justify-center text-center text-black bg-slate-100'>
                             <h1>Framsida</h1>
                         </div>
                     </div>
-                    <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl [backface-visibility:hidden] ${flip ? '' : '[transform:rotateY(180deg)] duration-500'}`}>
+                    <div className={`absolute inset-0 h-full w-full rounded-xl shadow-xl [backface-visibility:hidden] ${flip ? '' : '[transform:rotateY(180deg)] duration-500 '}`}>
                         <div className='flex min-h-full min-w-full rounded-xl flex-col items-center justify-center text-center text-black bg-slate-100'>
                             <h1>Baksida</h1>
                         </div>

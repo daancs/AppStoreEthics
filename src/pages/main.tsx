@@ -1,13 +1,9 @@
 import Button from '@/components/Button'
 import Flashcard from '@/components/Flashcard';
+import GameIcon from '@/components/GameIcon';
 import Head from 'next/head'
-import { useState } from 'react';
 
 export default function Main() {
-
-    
-    
-
 
   return (
     <>
@@ -17,8 +13,11 @@ export default function Main() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <div className="grid grid-cols-3 grid-rows-6 place-items-center gap-4 w-screen h-screen justify-center bg-cover bg-center bg-primary-bg ">
-            <div className='flex text-white col-start-2 col-end-2 row-start-1 row-end-1'>
-                Hej
+            <div className='flex col-start-2 col-end-2 row-start-1 row-end-1 justify-evenly items-center w-full h-full'>
+                <GameIcon iconName={'Första'}/>
+                <GameIcon iconName={'Andra'}/>
+                <GameIcon iconName={'Tredje'}/>
+                <GameIcon iconName={'Fjärde'}/>
             </div>
             <div className="flex justify-center items-center col-start-2 col-end-2 row-start-2 row-end-6">
                 <Flashcard/>
@@ -29,5 +28,5 @@ export default function Main() {
             </div>
         </div>
     </>
-  )
-}
+  );
+};
