@@ -8,6 +8,11 @@ import { useRouter } from 'next/router'
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
+/**
+ * The starting page of the application. Here the player can choose to start the game or not.
+ * 
+ * @returns the starting page
+ */
 const Home: NextPage =  () => {
 
   const router = useRouter()
