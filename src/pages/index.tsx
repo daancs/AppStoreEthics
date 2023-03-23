@@ -12,12 +12,12 @@ const Home: NextPage =  () => {
 
   const router = useRouter()
 
-  
+  //====== States ======
   const [displayButton, setDisplayButton] = useState(false)
-  
   const [startKeyPressed, setStartKeyPressed] = useState(false)
   const [endKeyPressed, setEndKeyPressed] = useState(false)
   
+  // handles keypresses
   const handleKeyPress = (event: KeyboardEvent) => {
     if (event.key === 'y') {
       setStartKeyPressed(true)
