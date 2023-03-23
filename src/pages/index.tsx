@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
+import { Roboto_Mono } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { NextPage } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
+
+const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
 export const Home: NextPage =  () => {
 
@@ -16,7 +17,11 @@ export const Home: NextPage =  () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='text-4xl'>Hello World!</div>
+      <div className='w-screen h-screen flex justify-center items-center bg-primary-bg text-white'>
+        <div className={`${roboto.variable} text-4xl font-mono`}>App Store Ethics: The Game</div>
+        <div className=''>
+        </div>
+      </div>
     </>
   )
 }
