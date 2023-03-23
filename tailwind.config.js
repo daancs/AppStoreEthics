@@ -16,7 +16,9 @@ module.exports = {
       },
       colors: {
         'primary-bg': '#1f1f1f',
-        'secondary-bg': '#09cdda',
+        'indi-blue': '#00A1FC',
+        'indi-green': '#11F11A',
+        'indi-red': '#FB0A18',
       }
     },
   },
