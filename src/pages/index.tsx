@@ -16,11 +16,13 @@ const Home: NextPage =  () => {
   const [displayButton, setDisplayButton] = useState(false)
   
   const [startKeyPressed, setStartKeyPressed] = useState(false)
+  const [endKeyPressed, setEndKeyPressed] = useState(false)
   
   const handleKeyPress = (event: KeyboardEvent) => {
     if (event.key === 'y') {
       setStartKeyPressed(true)
-      console.log("dab")
+    } else if (event.key === 'n') {
+      setEndKeyPressed(true)
     }
   }
 
@@ -28,12 +30,6 @@ const Home: NextPage =  () => {
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress)
   }, [])
-
-  const handleRouting = () => {
-    router.push('/game')
-  }
-
-  
 
   return (
     <>
@@ -70,9 +66,16 @@ const Home: NextPage =  () => {
                 " y",
                 2000,
                 () => {
-                  handleRouting()
+                  router.push('/game')
                 }
               ]}/>}
+              {endKeyPressed && <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={true} sequence={[
+                " n",
+                2000,
+                () => {
+                  router.reload()
+                }
+                ]}/>}
             </div>
           }
         </div>
