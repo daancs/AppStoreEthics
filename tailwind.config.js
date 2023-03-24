@@ -19,6 +19,7 @@ module.exports = {
         'indi-blue': '#00A1FC',
         'indi-green': '#11F11A',
         'indi-red': '#FB0A18',
+        'primary-button-bg': '#3E3E3E',
       }
     },
   },
