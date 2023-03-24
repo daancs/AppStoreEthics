@@ -16,7 +16,7 @@ interface GameOverProps {
 
 
 let messageLibrary: Map<string, string> = new Map([
-    ["win", "Congratulations. You seem to know your shit."],
+    ["win", "Congratulations. The company has run successfully under your management."],
     ["lose_privacy", "You are fired. You don't seem to be concerned about our users' safety."],
     ["lose_reputation", "You are fired. The reputation of our company is below zero."],
     ["lose_contentment", "You are fired. The users will never buy another product from us again."],
