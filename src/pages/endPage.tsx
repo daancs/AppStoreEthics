@@ -6,12 +6,6 @@ import { useRouter } from 'next/router'
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
-enum CardinalDirections {
-    North,
-    East,
-    South,
-    West
-}
 
 
 interface GameOverProps {
@@ -19,15 +13,15 @@ interface GameOverProps {
     Description : string
 }
 
-/*
-function EndText(props : GameOverProps) {
-    return (
-        <h1>Hello end!</h1>
-    )
-}
-*/
 
 
+let messageLibrary: Map<string, string> = new Map([
+    ["win", "Congratulations. You seem to know your shit."],
+    ["lose_privacy", "You are fired. You don't seem to be concerned about our users' safety."],
+    ["lose_reputation", "You are fired. The reputation of our company is below zero."],
+    ["lose_contentment", "You are fired. The users will never buy another product from us again."],
+    ["lose_revenue", "You are fired. The company has gone bankrupt."]
+]);
 
 
 
@@ -57,14 +51,24 @@ const DisplayEndText : NextPage = () => {
     }, [])
 
     
+
+    // Decide what message should be displayed
+    const tmp_desc = messageLibrary.get("lose_reputation");
+
+
     const obj:GameOverProps = {
         GameOver : true,
-        Description : "You are fired. You don't seem to be concerned about our users' safety."
+        Description : tmp_desc ? tmp_desc : "error" // Description="error" if value does not exist
     }
+
     const headline : string = obj.GameOver ? "Game Over" : "You won!";
     const desc : string = obj.Description;
-    
 
+
+
+
+    
+    // Show message
     return (
         <>
         <div className='w-screen h-screen flex flex-col justify-center items-center bg-primary-bg text-white'>
