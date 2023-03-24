@@ -18,7 +18,7 @@ export default function Flashcard() {
     }
 
     return (
-            <div className='h-[650px] w-[450px] [perspective:1000px] hover:cursor-pointer transition-all ease-in-out duration-500 hover:scale-105'>
+            <div className='h-[60vh] w-[25vw] min-h-[60vh] min-w-[400px] [perspective:1000px] hover:cursor-pointer transition-all ease-in-out duration-500 hover:scale-105'>
                 <div className={`relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${flip ? '[transform:rotateY(180deg)]' : ''}`} onClick={() => handleOnClick()}>
                     <div className='absolute inset-0 h-full w-full rounded-xl shadow-xl bg-slate-100 px-12 text-center text-black'>
                         <div className='flex min-h-full rounded-xl  flex-col items-center justify-center'>
