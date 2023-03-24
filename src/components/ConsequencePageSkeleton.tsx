@@ -40,6 +40,14 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
                     <span>Revenue</span>
                 </div>
             </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <GameIcon iconName={props.secondIcon}/>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <GameIcon iconName={props.fourthIcon}/>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 w-full h-full justify-evenly items-center font-mono'>
                 <Button childeren="Continue" link='game'/>
             </div>
