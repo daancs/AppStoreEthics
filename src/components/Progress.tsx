@@ -1,6 +1,5 @@
 interface ProgressBarProps {
   value: number;
-  parentWidth: string;
   parentHeight: string;
 }
 
@@ -19,10 +18,15 @@ const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight}) => {
       }
     };
 
-    const progressBarHeight = ((value/100) * Number(parentHeight));
+    /**
+     * Converting tailwindcss 'h-' to px
+     */
+    const progressBarHeight = `${4 * (value/100) * Number(parentHeight.replace("h-",""))}px`;
   
     return (
-        <div className='h-20' style={{backgroundColor: getColor(value)}}/>
+        <div>
+            <div style={{height: progressBarHeight, backgroundColor: getColor(value)}}/>
+        </div>
     );
   };
 
