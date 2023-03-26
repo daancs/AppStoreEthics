@@ -8,19 +8,19 @@ export default function ConsIndicators(props: any) {
       <>
 <div className={`flex col-start-2 col-end-2 row-start-2 row-end-2 justify-evenly items-center w-full h-full font-mono`}>
 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    <GameIcon iconPicture={props.firstIcon} height="h-60" width="w-60" progressValue={50} displayProgress={true}/>
+    <GameIcon label="reputation" height="h-60" width="w-60" progressValue={50} displayProgress={true} hoverable={false}/>
     <span>Reputation</span>
 </div>
 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    <GameIcon iconPicture={props.secondIcon} height="h-60" width="w-60" progressValue={80} displayProgress={true}/>
+    <GameIcon label='contentment' height="h-60" width="w-60" progressValue={80} displayProgress={true} hoverable={false}/>
     <span>Contentment</span>
 </div>
 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    <GameIcon iconPicture={props.thirdIcon} height="h-60" width="w-60" progressValue={50} displayProgress={true}/>
+    <GameIcon label="privacy" height="h-60" width="w-60" progressValue={50} displayProgress={true} hoverable={false}/>
     <span>Privacy</span>
 </div>
 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    <GameIcon iconPicture={props.fourthIcon} height="h-60" width="w-60" progressValue={20} displayProgress={true}/>
+    <GameIcon label="revenue" height="h-60" width="w-60" progressValue={20} displayProgress={true} hoverable={false}/>
     <span>Revenue</span>
 </div>
 </div>
