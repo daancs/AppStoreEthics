@@ -1,5 +1,4 @@
 import GamePageSkeleton from '@/components/GamePageSkeleton';
-import Head from 'next/head'
 import { NextPage } from 'next'
 
 /**
