@@ -14,7 +14,6 @@ export default function Flashcard() {
     // Handle click on the flashcard
     function handleOnClick() {
         setFlip(!flip);
-        console.log(flip);
     }
 
     return (
