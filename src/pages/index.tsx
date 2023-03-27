@@ -20,9 +20,14 @@ const Home: NextPage =  () => {
   const [displayButton, setDisplayButton] = useState(false)
   const [startKeyPressed, setStartKeyPressed] = useState(false)
   const [endKeyPressed, setEndKeyPressed] = useState(false)
+  const [autoComplete, setAutoComplete] = useState(false)
   
   // handles keypresses
   const handleKeyPress = (event: KeyboardEvent) => {
+    if (!autoComplete && event.key === 'Enter' ) {
+      setAutoComplete(true)
+      setDisplayButton(true)
+    }
     if (event.key === 'y') {
       setStartKeyPressed(true)
     } else if (event.key === 'n') {
@@ -41,18 +46,33 @@ const Home: NextPage =  () => {
         <div className='flex flex-col'>
           <div className={`${roboto.variable} text-4xl font-mono m-2`}>App Store Ethics: The Game</div>
           <div className='font-mono m-2 max-w-md'>
-            <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ******",
-              1000,
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store.",
-              2000,
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store. \n\n The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose!",
-              1000,
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store. \n\n The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose! \n\n Instructions........... Done",
-              () => {
-                setDisplayButton(true)
-              }
-            ]} />
+            {autoComplete ? (
+              <span>
+                Last login: Wed Feb 15 15:05:46 on console
+                (base) appStoreManager@Admin-MacBook ~ %
+                [sudo] password for appStoreManager: ****** 
+                <br/><br/>
+                Today, you will review and decide which of the submitted applications will make it to the App Store. 
+                <br/><br/>
+                The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose! 
+                <br/><br/>
+                Instructions........... Done
+              </span>
+            ) : (
+              <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
+                "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ******",
+                1000,
+                "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store.",
+                2000,
+                "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store. \n\n The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose!",
+                1000,
+                "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store. \n\n The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose! \n\n Instructions........... Done",
+                () => {
+                  setDisplayButton(true)
+                }
+              ]} />
+              )
+            }
             
           </div>
           {displayButton && 
