@@ -3,7 +3,7 @@ import GameIcon from "./GameIcon";
 
 //Här ska det in pilar och text samt bilder
 
-export default function ConsIndicators(props: any) {
+export default function ConsIndicators() {
     return (
       <>
 <div className={`flex col-start-2 col-end-2 row-start-2 row-end-2 justify-evenly items-center w-full h-full font-mono`}>
