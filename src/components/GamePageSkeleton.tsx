@@ -2,6 +2,7 @@ import Button from '@/components/Button'
 import Flashcard from '@/components/Flashcard';
 import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
+import AppIndicators from './AppIndicators';
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -24,12 +25,7 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
   return (
     <>
         <div className={`grid grid-cols-3 grid-rows-6 place-items-center gap-4 w-screen h-screen justify-center bg-cover bg-center bg-primary-bg ${roboto.variable} overflow-hidden`}>
-            <div className={`flex col-start-2 col-end-3 row-start-1 row-end-1 justify-evenly items-center w-full h-full min-w-[400px] font-mono`}>
-                <GameIcon iconName={props.firstIcon}/>
-                <GameIcon iconName={props.secondIcon}/>
-                <GameIcon iconName={props.thirdIcon}/>
-                <GameIcon iconName={props.fourthIcon}/>
-            </div>
+            <AppIndicators/>
             <div className={`flex justify-center items-center col-start-2 col-end-2 row-start-2 row-end-6 font-mono`}>
                 <Flashcard/>
             </div>
