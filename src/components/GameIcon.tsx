@@ -1,7 +1,7 @@
 import ProgressBar from '@/components/Progress';
 import Image, { StaticImageData } from 'next/image';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import repImage from '../images/Reputation.png';
+import repImage from '../images/reputation.png';
 import privImage from '../images/privacy.png';
 import revImage from '../images/revenue.png';
 import conImage from '../images/content.png';
