@@ -7,7 +7,7 @@ import revImage from '../images/revenue.png';
 import conImage from '../images/content.png';
 
 interface GameIconProps {
-    label: string;
+    iconName: string;
     width?: string;
     height?: string;
     progressValue?: number;
