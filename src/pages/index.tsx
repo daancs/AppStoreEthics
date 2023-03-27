@@ -16,13 +16,25 @@ const Home: NextPage =  () => {
 
   const router = useRouter()
 
+  const allText ={
+    loginInfoText: "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ******\n\n",
+    reviewText: "Today, you will review and decide which of the submitted applications will make it to the App Store.\n\n",
+    consequencesText: "The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose!\n\n",
+    intructionsText: "Instructions........... Done"
+  }
+
   //====== States ======
   const [displayButton, setDisplayButton] = useState(false)
   const [startKeyPressed, setStartKeyPressed] = useState(false)
   const [endKeyPressed, setEndKeyPressed] = useState(false)
+  const [autoComplete, setAutoComplete] = useState(false)
   
   // handles keypresses
   const handleKeyPress = (event: KeyboardEvent) => {
+    if (!autoComplete && event.key === 'Enter' ) {
+      setAutoComplete(true)
+      setDisplayButton(true)
+    }
     if (event.key === 'y') {
       setStartKeyPressed(true)
     } else if (event.key === 'n') {
@@ -41,18 +53,31 @@ const Home: NextPage =  () => {
         <div className='flex flex-col'>
           <div className={`${roboto.variable} text-4xl font-mono m-2`}>App Store Ethics: The Game</div>
           <div className='font-mono m-2 max-w-md'>
-            <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ******",
-              1000,
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store.",
-              2000,
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store. \n\n The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose!",
-              1000,
-              "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ****** \n\n Today, you will review and decide which of the submitted applications will make it to the App Store. \n\n The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose! \n\n Instructions........... Done",
-              () => {
-                setDisplayButton(true)
-              }
-            ]} />
+            {autoComplete ? (
+              <span>
+                {allText.loginInfoText}
+                <br/><br/>
+                {allText.reviewText}
+                <br/><br/>
+                {allText.consequencesText}
+                <br/><br/>
+                {allText.intructionsText}
+              </span>
+            ) : (
+              <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
+                allText.loginInfoText,
+                1000,
+                allText.loginInfoText + allText.reviewText,
+                2000,
+                allText.loginInfoText + allText.reviewText + allText.consequencesText,
+                1000,
+                allText.loginInfoText + allText.reviewText + allText.consequencesText + allText.intructionsText,
+                () => {
+                  setDisplayButton(true)
+                }
+              ]} />
+              )
+            }
             
           </div>
           {displayButton && 
