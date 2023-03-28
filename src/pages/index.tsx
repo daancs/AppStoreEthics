@@ -18,22 +18,27 @@ const Home: NextPage =  () => {
 
   const allText ={
     loginInfoText: "Last login: Wed Feb 15 15:05:46 on console\n (base) appStoreManager@Admin-MacBook ~ %\n [sudo] password for appStoreManager: ******\n\n",
-    reviewText: "Today, you will review and decide which of the submitted applications will make it to the App Store.\n\n",
-    consequencesText: "The consequences can be either negative or positive or both. It is your job to decide based on the four factors you are given. Do not let any of them run out or you lose!\n\n",
+    reviewText: "Today, you will review and decide which of the submitted applications will make it to the App Store.\n\n To make an informed decision, you can read a text specification and see a visual representation of the submitted application. \n\n",
+    consequencesText: "Make sure to have the four factors in mind when reviewing. Do not let any of them run out or your future at our company will be uncertain.\n\n",
+    disclaimerText: "DESIGNER NOTE:\n Keep in mind while playing the game, the design is a reflection of the designers’ values. We aim to create a reflective game that will make the player gain possible insights about ethics in the field of computer science.\nBest regards, \nSix bachelor students in software engineering.",
     intructionsText: "Instructions........... Done"
   }
 
   //====== States ======
   const [displayButton, setDisplayButton] = useState(false)
+  const [disclaimer, setDisclaimer] = useState(false)
   const [startKeyPressed, setStartKeyPressed] = useState(false)
   const [endKeyPressed, setEndKeyPressed] = useState(false)
   const [autoComplete, setAutoComplete] = useState(false)
-  
+  const [displayClass, setDisplayClass] = useState('block')
+
+
   // handles keypresses
   const handleKeyPress = (event: KeyboardEvent) => {
     if (!autoComplete && event.key === 'Enter' ) {
       setAutoComplete(true)
       setDisplayButton(true)
+      setDisplayClass('none')
     }
     if (event.key === 'y') {
       setStartKeyPressed(true)
@@ -47,12 +52,16 @@ const Home: NextPage =  () => {
     window.addEventListener('keydown', handleKeyPress)
   }, [])
 
+  /**
+   * This is a dumpster fire but since TypeAnimation is perma-memoized, 
+   * it can NEVER re-render and thus, it needs to be this way...
+   */
   return (
     <>
       <div className='w-screen h-screen flex flex-col justify-center items-center bg-primary-bg text-white'>
         <div className='flex flex-col'>
           <div className={`${roboto.variable} text-4xl font-mono m-2`}>App Store Ethics: The Game</div>
-          <div className='font-mono m-2 max-w-md'>
+          <div className='font-mono m-2 max-w-lg'>
             {autoComplete ? (
               <span>
                 {allText.loginInfoText}
@@ -61,25 +70,39 @@ const Home: NextPage =  () => {
                 <br/><br/>
                 {allText.consequencesText}
                 <br/><br/>
+                <span className='text-rose-400'>{allText.disclaimerText}</span>
+                <br/><br/>
                 {allText.intructionsText}
               </span>
             ) : (
-              <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
-                allText.loginInfoText,
+                  <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
+                    allText.loginInfoText,
+                    1000,
+                    allText.loginInfoText + allText.reviewText,
+                    2000,
+                    allText.loginInfoText + allText.reviewText + allText.consequencesText,
+                    1000,
+                    allText.loginInfoText + allText.reviewText + allText.consequencesText,
+                    () => {
+                      setDisclaimer(true)
+                    }
+                  ]} />
+              )
+            }
+
+            {disclaimer &&
+            <div style={{display: displayClass}}>
+              <TypeAnimation className='text-rose-400' cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[
+                allText.disclaimerText,
                 1000,
-                allText.loginInfoText + allText.reviewText,
-                2000,
-                allText.loginInfoText + allText.reviewText + allText.consequencesText,
-                1000,
-                allText.loginInfoText + allText.reviewText + allText.consequencesText + allText.intructionsText,
                 () => {
                   setDisplayButton(true)
                 }
-              ]} />
-              )
+              ]}/>
+            </div>
             }
-            
           </div>
+          
           {displayButton && 
             <div className='font-mono'>
               <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={false} sequence={[
