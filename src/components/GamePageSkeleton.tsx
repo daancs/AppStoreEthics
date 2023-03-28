@@ -30,8 +30,8 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
                 <Flashcard/>
             </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 justify-evenly items-center w-full h-full font-mono min-w-[400px]'>
-                <Button childeren="Decline" link='game'/>
-                <Button childeren="Accept" link='game'/>
+                <Button link='game'>Decline</Button>
+                <Button link='game'>Accept</Button>
             </div>
         </div>
     </>
