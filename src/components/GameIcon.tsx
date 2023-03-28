@@ -51,7 +51,6 @@ export default function GameIcon(props: GameIconProps) {
     }
 
     return (
-        //Removed hover:scale-110 hover:cursor-pointer, only relevant in AppIndicators, not ConsIndicators
             <div className={`relative ${props.width ? props.width : 'w-20'} ${props.height ? props.height : 'h-20'} ${props.hoverable ? 'hover:scale-110 hover:cursor-pointer' : ''} bg-white rounded-xl shadow-xl text-black text-xl transition-all ease-in-out delay-100 overflow-hidden`}>
                 <div className="text-center absolute z-10">
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
