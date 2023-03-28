@@ -7,10 +7,7 @@ import AppIndicators from './AppIndicators';
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
 interface GamePageSkeletonProps {
-    firstIcon: string;
-    secondIcon: string;
-    thirdIcon: string;
-    fourthIcon: string;
+    
 }
 // TODO: Change the flash card when implemented (should be included in the interface)
 

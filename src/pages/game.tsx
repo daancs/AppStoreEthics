@@ -12,7 +12,7 @@ const Game: NextPage = () => {
 
   return (
     <>
-        <GamePageSkeleton firstIcon={'First'} secondIcon={'Second'} thirdIcon={'Third'} fourthIcon={'Fourth'}/>
+        <GamePageSkeleton/>
     </>
   );
 };
