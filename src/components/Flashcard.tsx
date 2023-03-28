@@ -41,17 +41,18 @@ export default function Flashcard(props: FlashcardProps) {
                             <Image src={mySpyImage ?? 'App Picture'} alt='App Picture not found' className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
                         </div>              
                     </div>
-                    <div className='absolute inset-0 h-full w-full rounded-xl shadow-xl bg-slate-100 px-12 text-black [transform:rotateY(180deg)] [backface-visibility:hidden]'>
+                    <div className='absolute inset-0 h-full w-full rounded-xl shadow-xl bg-slate-100 px-10 text-black [transform:rotateY(180deg)] [backface-visibility:hidden]'>
                         <div className='flex flex-col rounded-xl'>
-                            <div className='text-3xl py-6 text-center'>
+                            <div className='text-3xl py-8 text-center'>
                                 {mySpyApp.title}
                             </div>
-                            <div className='text-lg'>
+                            <span className='text-lg'>
                                 Users of this app can:
-                                <div className='text-lg indent-4'>
+                                <br/><br/>
+                                <div className='whitespace-pre-line px-4'>
                                     {mySpyApp.description}
                                 </div>
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </div>
