@@ -49,7 +49,7 @@ export default function Flashcard(props: FlashcardProps) {
                             <span className='text-lg'>
                                 Users of this app can:
                                 <br/><br/>
-                                <div className='whitespace-pre-line px-4'>
+                                <div className='whitespace-pre-line min-h-[40vh] h-[300px] overflow-scroll px-4'>
                                     {mySpyApp.description}
                                 </div>
                             </span>
