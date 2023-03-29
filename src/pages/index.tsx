@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 import { TypeAnimation } from 'react-type-animation'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Playbutton from '@/components/Playbutton'
 
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
@@ -25,13 +26,13 @@ const Home: NextPage =  () => {
   }
 
   //====== States ======
-  const [displayButton, setDisplayButton] = useState(false)
-  const [disclaimer, setDisclaimer] = useState(false)
   const [startKeyPressed, setStartKeyPressed] = useState(false)
   const [endKeyPressed, setEndKeyPressed] = useState(false)
   const [autoComplete, setAutoComplete] = useState(false)
+  
+  const [disclaimer, setDisclaimer] = useState(false)
   const [displayClass, setDisplayClass] = useState('block')
-
+  const [displayButton, setDisplayButton] = useState(false)
 
   // handles keypresses
   const handleKeyPress = (event: KeyboardEvent) => {
@@ -102,28 +103,7 @@ const Home: NextPage =  () => {
             </div>
             }
           </div>
-          
-          {displayButton && 
-            <div className='font-mono'>
-              <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={false} sequence={[
-                "Do you want to start the game? [Y/n] \n >"
-              ]}/>
-              {startKeyPressed && <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={true} sequence={[
-                " y",
-                2000,
-                () => {
-                  router.push('/game')
-                }
-              ]}/>}
-              {endKeyPressed && <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={true} sequence={[
-                " n",
-                2000,
-                () => {
-                  router.reload()
-                }
-                ]}/>}
-            </div>
-          }
+          <Playbutton title={"Do you want to start the game?"} displayButton={displayButton} startKeyPressed={startKeyPressed} endKeyPressed={endKeyPressed}/>
         </div>
       </div>
     </>
