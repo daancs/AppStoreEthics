@@ -13,7 +13,15 @@ interface GameIconProps {
     progressValue?: number;
     displayProgress?: boolean;
     hoverable?: boolean;
+    appInd?: boolean; //för att consInd ska ha pilar istället för prickar!
+    willChange?: boolean; //temporärt? för att avgöra om prickarna ska synas
+
 }
+
+/** 
+ * @todo Make the dots big or small depending on the amount of change that will happen
+ */
+
 
 /**
  * Component for the game icon
@@ -50,15 +58,17 @@ export default function GameIcon(props: GameIconProps) {
 
     }
 
+    //willChange: false, ha en margin, appInd visa pricken, appInd false visa pil
     return (
-        //Removed hover:scale-110 hover:cursor-pointer, only relevant in AppIndicators, not ConsIndicators
+         <div>
             <div className={`relative ${props.width ? props.width : 'w-20'} ${props.height ? props.height : 'h-20'} ${props.hoverable ? 'hover:scale-110 hover:cursor-pointer' : ''} bg-white rounded-xl shadow-xl text-black text-xl transition-all ease-in-out delay-100 overflow-hidden`}>
-                <div className="text-center absolute z-10">
+                <div className="absolute z-10">
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
                 </div>
                 <div className='absolute bottom-0 w-full'>
                     {props.displayProgress ? <ProgressBar value={Number(props.progressValue) || 50} parentHeight={`${props.height ? props.height : '20'}`}/> : null} 
                 </div>
             </div>
+        </div>
     )
 }
