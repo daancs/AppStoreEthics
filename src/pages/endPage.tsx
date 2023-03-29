@@ -83,7 +83,7 @@ const DisplayEndText : NextPage = () => {
             ]} />
             
           </div>
-          <Playbutton title={"Do you want to play again?"} endPageRoute={"/end"} displayButton={displayButton} startKeyPressed={startKeyPressed} endKeyPressed={endKeyPressed}/>
+          <Playbutton title={"Do you want to play again?"} endPageRoute={"/end"} startPageRoute={"/"} displayButton={displayButton} startKeyPressed={startKeyPressed} endKeyPressed={endKeyPressed}/>
         </div>
       </div>
             

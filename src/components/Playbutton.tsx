@@ -7,6 +7,7 @@ interface PlaybuttonProps {
     startKeyPressed: boolean;
     endKeyPressed: boolean;
     endPageRoute?: string;
+    startPageRoute?: string;
 }
 
 const Playbutton = (props: PlaybuttonProps) => {
@@ -24,14 +25,14 @@ const Playbutton = (props: PlaybuttonProps) => {
                     " y",
                     2000,
                     () => {
-                    router.push('/game')
+                        props.startPageRoute ? router.push(props.startPageRoute) : router.push('/game')
                     }
                 ]}/>}
                 {props.endKeyPressed && <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={true} sequence={[
                     " n",
                     2000,
                     () => {
-                    props.endPageRoute ? router.push(props.endPageRoute) : router.reload()
+                        props.endPageRoute ? router.push(props.endPageRoute) : router.reload()
                     }
                     ]}/>}
                 </div>
