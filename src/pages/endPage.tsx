@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 import { TypeAnimation } from 'react-type-animation'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import Playbutton from '@/components/Playbutton'
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -82,27 +83,7 @@ const DisplayEndText : NextPage = () => {
             ]} />
             
           </div>
-          {displayButton && 
-            <div className='font-mono'>
-              <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={false} sequence={[
-                "Do you want to play again? [Y/n] \n >"
-              ]}/>
-              {startKeyPressed && <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={true} sequence={[
-                " y",
-                2000,
-                () => {
-                  router.push('/')
-                }
-              ]}/>}
-              {endKeyPressed && <TypeAnimation speed={80} style={{whiteSpace: 'pre-line'}} cursor={true} sequence={[
-                " n",
-                2000,
-                () => {
-                  router.reload()
-                }
-                ]}/>}
-            </div>
-          }
+          <Playbutton title={"Do you want to play again?"} endPageRoute={"/thankYou"} startPageRoute={"/"} displayButton={displayButton} startKeyPressed={startKeyPressed} endKeyPressed={endKeyPressed}/>
         </div>
       </div>
             
