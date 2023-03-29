@@ -46,7 +46,7 @@ export default class playerData{
         return this.shuffle(this.apps);
     }
 
-    private shuffle (arr: any[]) {
+    private shuffle (arr: any[]):App[]{
         for (let i = arr.length-1; i > 0; i--){
             const j = Math.floor(Math.random() * (i+1)); // 0 <= j <= i
             const tmp = arr[j];
@@ -59,7 +59,7 @@ export default class playerData{
 
 
     // Call to get next app (will set currentApp to undefined if empty)
-    public nextApp(){
+    public nextApp():void{
         this.currentApp = this.apps.pop();
     }
 
@@ -75,7 +75,7 @@ export default class playerData{
 
     // Takes a tuple with a stat and a value
     // Set the corresponding variable += value
-    private setValue(data: [Stat, number]){
+    private setValue(data: [Stat, number]):void{
         const stat = data[0];
         const value = data[1];
 
