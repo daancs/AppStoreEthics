@@ -5,6 +5,11 @@ interface ArrowProps {
     visible: boolean,
 }
 
+/**
+ * Depending on props, arrows can either point upwards or downwards, be visible or not.
+ * @param props 
+ * @returns 
+ */
 export default function ArrowIndicators(props: ArrowProps) {
     const setColour = (pointUp: boolean) => {
         if(pointUp) {

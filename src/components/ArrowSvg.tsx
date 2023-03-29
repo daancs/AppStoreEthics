@@ -1,6 +1,11 @@
 import * as React from "react"
 import { SVGProps } from "react"
 
+/**
+ * Svg component for arrow
+ * @param props 
+ * @returns 
+ */
 const ArrowSvg= (props: SVGProps<SVGSVGElement>) => (
   <svg
     width={44}
