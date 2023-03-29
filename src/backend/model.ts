@@ -73,24 +73,24 @@ export default class playerData{
 
     }
 
-    // Takes a tuple with a stat and a value
-    // Set the corresponding variable += value
+    // Update the value of a stat, allowed to be neagtive but not higher than 100
     private setValue(data: [Stat, number]):void{
         const stat = data[0];
         const value = data[1];
 
 
-        if (stat === Stat.REPUTATION){
-            this.reputation+=value;
-        }
-        else if (stat === Stat.CONTENTMENT){
-            this.contentment+=value;
-        }
-        else if (stat === Stat.PRIVACY){
-            this.privacy+=value;
-        }
-        else {
-            this.revenue+=value;
+        switch(stat){
+            case Stat.REPUTATION:
+                this.reputation = Math.min(this.reputation+value, 100);
+                break;
+            case Stat.CONTENTMENT:
+                this.contentment = Math.min(this.contentment+value, 100);
+                break;
+            case Stat.PRIVACY:
+                this.privacy = Math.min(this.privacy+value, 100);
+                break;
+            default:
+                this.revenue = Math.min(this.revenue+value, 100);
         }
     }
 
