@@ -20,7 +20,7 @@ export default class playerData{
     private privacy: number;
     private revenue: number;
     private gameState: GameState;
-    private apps: App[]; // Move apps here
+    private apps: App[]; 
     private currentApp: App | undefined;
 
 
@@ -112,7 +112,8 @@ export default class playerData{
         return this.revenue;
     }
 
-    // Returns the current state of the game
+
+    // Updates the current state of the game
     public getGameState():void{
         if (this.reputation <= 0){
             this.gameState = GameState.LOSE_REPUTATION;
@@ -134,7 +135,7 @@ export default class playerData{
         }
     }
 
-    // Returns true if game if supposed to end
+    // Returns true if game is over 
     public isFinished():boolean{
         return this.gameState !== GameState.IN_PROGRESS;
     }

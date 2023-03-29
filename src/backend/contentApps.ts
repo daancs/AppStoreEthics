@@ -11,6 +11,7 @@ export enum Decision{
 }
 
 
+// Representation of an app
 export class App{
     readonly name: string;
     readonly desc: string;
@@ -46,9 +47,9 @@ export class App{
 
 // Data for a consequence 
 export class Consequence{
-    text: string;
-    stat: Stat;
-    diff: number;
+    readonly text: string;
+    readonly stat: Stat;
+    readonly diff: number;
 
     constructor (text: string, stat: Stat, diff: number){
         this.text = text;
