@@ -8,7 +8,7 @@ export default function ConsIndicators() {
       <>
 <div className={`flex col-start-2 col-end-2 row-start-2 row-end-2 justify-around items-center w-1/3 h-full font-mono`}>
 <div className="flex direction flex-col items-center">
-    <GameIcon iconName="reputation" progressValue={50} displayProgress={true} hoverable={false}/>
+    <GameIcon iconName="reputation" height="h-40" width="w-40" progressValue={50} displayProgress={true} hoverable={false}/>
     <span>Reputation</span>
 </div>
 <div className="flex direction flex-col items-center">
