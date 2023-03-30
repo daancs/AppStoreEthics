@@ -32,13 +32,13 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
             <div className="flex justify-between items-center mb-5">
                 <div className='mr-5'>
                     {/* hardcoded before its made into a component */}
-                <GameIcon iconName="reputation"/> 
+                <GameIcon iconName="reputation" isConsequence={true}/> 
                 </div>
                 <span className='text-2xl flex flex-wrap ml-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
             </div>
             <div className="flex justify-between items-center">
                 <div className='mr-5'>
-                <GameIcon iconName="privacy"/>
+                <GameIcon iconName="privacy" isConsequence={true}/>
                 </div>
                 <span className='text-2xl flex flex-wrap ml-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
             </div>
