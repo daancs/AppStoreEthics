@@ -42,6 +42,14 @@ export default class playerData{
                                                               new Consequence("Infidelity was discovered", Stat.REVENUE, -10)], 
                                                               [new Consequence("Users did not feel spied on", Stat.PRIVACY, 10),
                                                               new Consequence("No new app was released this month", Stat.REVENUE, -20)]);
+
+        const app1 = new App("bargain.", "description",     [new Consequence("This app made App Store gain credibility in sustainability", Stat.REPUTATION, 50),
+                                                              new Consequence("App Store increased in users", Stat.REVENUE, 50),
+                                                              new Consequence("Users liked the app because they earned money from selling old things", Stat.CONTENTMENT, 50),
+                                                              new Consequence("Some of the users gave out sensitive data to sellers", Stat.PRIVACY, -25)],
+      
+                                                              [new Consequence("App Store users could not find sustainable options for shopping", Stat.REPUTATION, -25),//reputation, revenue, contentment (-25%)
+                                                              new Consequence("Potential users did not have to share sensitive data", Stat.PRIVACY, 50)], "src/images/app1_bargain.png") // Hur lägga in bild
         this.apps.push(dummyApp1);
         return this.shuffle(this.apps);
     }
