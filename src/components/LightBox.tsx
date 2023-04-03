@@ -9,22 +9,32 @@ interface LightBoxProps {
 export const LightBox = (props: LightBoxProps) => {
     const { visible, cancel, children } = props;
     useEffect(() => {
-      const checkIfClickedOutside = (event: MouseEvent) => {
-        // If the lightbox is open and user clicks on the screen, 
-        //then close the lightbox
-        if (visible) {
-          cancel();
-        }
-      };
-  
-      document.addEventListener("mousedown", checkIfClickedOutside);
+        const checkIfClickedOutside = (event: MouseEvent) => {
+            // If the lightbox is open and user clicks on the screen, 
+            //then close the lightbox
+            if (visible) {
+                cancel();
+            }
+        };
+
+        const checkIfEscapePressed = (event: KeyboardEvent) => {
+            if (visible && event.key === 'Escape') {
+                cancel();
+            }
+        };
+
+        document.addEventListener("mousedown", checkIfClickedOutside);
+        document.addEventListener("keydown", checkIfEscapePressed);
   
       // Cleanup the event listener
       return () => {
         document.removeEventListener("mousedown", checkIfClickedOutside);
+        document.removeEventListener("keydown", checkIfEscapePressed);
       };
     }, [visible]);
-  
+
+    
+
     return (
       <>
         {visible && (
