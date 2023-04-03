@@ -11,13 +11,15 @@ export const LightBox = (props: LightBoxProps) => {
     useEffect(() => {
         const checkIfClickedOutside = (event: MouseEvent) => {
             // If the lightbox is open and user clicks on the screen, 
-            //then close the lightbox
+            // then close the lightbox.
             if (visible) {
                 cancel();
             }
         };
 
         const checkIfEscapePressed = (event: KeyboardEvent) => {
+            // If the lightbox is open and the user presses the escape key,
+            // then close the lightbox.        
             if (visible && event.key === 'Escape') {
                 cancel();
             }
@@ -32,8 +34,6 @@ export const LightBox = (props: LightBoxProps) => {
         document.removeEventListener("keydown", checkIfEscapePressed);
       };
     }, [visible]);
-
-    
 
     return (
       <>
