@@ -15,7 +15,7 @@ export default function InfoButton() {
 
     return (
         <div>
-            <button type="button" onClick={openInfo}>
+            <button type="button" className="text-white underline" onClick={openInfo}>
                 What do these symbols mean?
             </button>
             <LightBox visible={visible} cancel={closeInfo}>

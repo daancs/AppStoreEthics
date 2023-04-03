@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 interface LightBoxProps {
     visible: boolean,
@@ -10,8 +10,8 @@ export const LightBox = (props: LightBoxProps) => {
     const { visible, cancel, children } = props;
     useEffect(() => {
       const checkIfClickedOutside = (event: MouseEvent) => {
-        // If the modal is open and the clicked target is not within the modal, 
-        //then close the modal
+        // If the lightbox is open and user clicks on the screen, 
+        //then close the lightbox
         if (visible) {
           cancel();
         }
@@ -28,12 +28,9 @@ export const LightBox = (props: LightBoxProps) => {
     return (
       <>
         {visible && (
-          <div className="bg-indi-red">
-            <div>
-              <button onClick={cancel}>close modal</button>
-              {children}
+            <div className="bg-black bg-opacity-50 absolute bottom-0 left-0 z-50 h-screen w-screen">
+                {children}
             </div>
-          </div>
         )}
       </>
     );
