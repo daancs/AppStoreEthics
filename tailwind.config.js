@@ -20,8 +20,8 @@ module.exports = {
         'indi-green': '#11F11A',
         'indi-red': '#FB0A18',
         'primary-button-bg': '#3E3E3E',
-        'secondary-icon-bg': '#E6E6E6',
         'black-smoke': '#3E3E3F',
+        'secondary-icon-bg': '#E6E6E6',
       }
     },
   },

@@ -18,7 +18,7 @@ export default function InfoIcon(props: IconProps) {
                 <div >
                     <GameIcon iconName={props.iconName}/>
                 </div>
-                <p className="float-right ml-5 w-65 mt-5 text-white">{props.desc}</p>
+                <p className="float-right ml-5 mr-20 w-65 mt-5 text-white">{props.desc}</p>
             </div>
             
         </div>
