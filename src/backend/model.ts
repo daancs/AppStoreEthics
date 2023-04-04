@@ -1,7 +1,6 @@
-// Keeps all info about a player's stats
-
-import {App, Stat, Decision, Consequence} from 'src/backend/contentApps';
-
+// Keeps all info about a player's consequences
+import { IApp, IConsequence } from './content/IApp';
+import getData from './content/Content';
 
 enum GameState{
     IN_PROGRESS,
@@ -12,6 +11,18 @@ enum GameState{
     LOSE_REVENUE,
 }
 
+enum Stat{
+    REPUTATION,
+    CONTENTMENT,
+    PRIVACY,
+    REVENUE,
+}
+
+enum Decision{
+    ACCEPT,
+    DECLINE,
+}
+
 
 
 export default class playerData{
@@ -20,8 +31,8 @@ export default class playerData{
     private privacy: number;
     private revenue: number;
     private gameState: GameState;
-    private apps: App[]; 
-    private currentApp: App | undefined;
+    private apps: IApp[]; 
+    private currentApp : IApp | undefined;
 
 
     // Initialization
@@ -36,17 +47,13 @@ export default class playerData{
     }
 
 
-    // Factory for apps at initialization
-    private initApps ():App[]{
-        const dummyApp1 = new App("mSpy", "destroy privacy", [new Consequence("A parent found their missing child", Stat.CONTENTMENT, 10),
-                                                              new Consequence("Infidelity was discovered", Stat.REVENUE, -10)], 
-                                                              [new Consequence("Users did not feel spied on", Stat.PRIVACY, 10),
-                                                              new Consequence("No new app was released this month", Stat.REVENUE, -20)]);
-        this.apps.push(dummyApp1);
-        return this.shuffle(this.apps);
+    // Get data from Content.ts and shuffle it
+    private initApps (): IApp[]{
+        const data : IApp[] = getData();
+        return this.shuffle(data);
     }
 
-    private shuffle (arr: any[]):App[]{
+    private shuffle (arr: any[]): any[]{
         for (let i = arr.length-1; i > 0; i--){
             const j = Math.floor(Math.random() * (i+1)); // 0 <= j <= i
             const tmp = arr[j];
@@ -59,40 +66,78 @@ export default class playerData{
 
 
     // Call to get next app (will set currentApp to undefined if empty)
-    public nextApp():void{
+    public nextApp(): void{
         this.currentApp = this.apps.pop();
     }
 
-    // Takes an app with the player's decision and updates all values accordingly
-    public updateStats(app: App, data: Decision) : void{
-        const appData: [Stat, number][] = app.getConsequences(data);
-        
-        for (let i = 0; i< appData.length; i++){
-            this.setValue(appData[i]);
+    // Takes the player's decision and updates all values accordingly using the current app
+    public updateStats(decision : Decision): void{
+
+        // Set variable to hold the correct consequences depending on the decision
+        const consequences : IConsequence[] | undefined = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
+
+        // Happens if list of apps is empty i.e. the game is won
+        if (consequences === undefined){
+            return;
         }
 
+        // Update value for all stats
+        this.calcAndUpDateValue(Stat.REPUTATION, consequences);
+        this.calcAndUpDateValue(Stat.CONTENTMENT, consequences);
+        this.calcAndUpDateValue(Stat.PRIVACY, consequences);
+        this.calcAndUpDateValue(Stat.REVENUE, consequences);
     }
 
-    // Update the value of a stat, allowed to be neagtive but not higher than 100
-    private setValue(data: [Stat, number]):void{
-        const stat = data[0];
-        const value = data[1];
+
+    // Calculates and updates the value of a stat from a list of consequences
+    private calcAndUpDateValue(stat: Stat, arr: IConsequence[]): void{
+        const value = this.calcValue(stat, arr);
+        this.updateValue(stat, value);
+    }
 
 
+    // Adds together all points of a stat from a list of consequences
+    private calcValue(stat: Stat, arr: IConsequence[]): number{
+        let sum = 0;
+
+        for (let i=0; i<arr.length; i++){
+            const cons = arr[i];
+            switch(stat){
+                case Stat.REPUTATION:
+                    sum+=cons.reputation || 0;
+                    break;
+                case Stat.CONTENTMENT:
+                    sum+=cons.contentment || 0;
+                    break;
+                case Stat.PRIVACY:
+                    sum+=cons.privacy || 0;
+                    break;
+                default:
+                    sum+=cons.revenue || 0;
+            }
+        }
+
+        return sum;
+    }
+
+    // Updates value according to stat, upper limit is 100
+    private updateValue(stat: Stat, value = 0): void{
         switch(stat){
             case Stat.REPUTATION:
-                this.reputation = Math.min(this.reputation+value, 100);
-                break;
+                this.reputation = Math.min(100, this.reputation+value);
+                return;
             case Stat.CONTENTMENT:
-                this.contentment = Math.min(this.contentment+value, 100);
-                break;
+                this.contentment = Math.min(100, this.contentment+value);
+                return;
             case Stat.PRIVACY:
-                this.privacy = Math.min(this.privacy+value, 100);
-                break;
+                this.privacy = Math.min(100, this.privacy+value);
+                return;
             default:
-                this.revenue = Math.min(this.revenue+value, 100);
+                this.revenue = Math.min(100,this.revenue+value);
         }
     }
+
+    
 
 
     // Getters
@@ -112,9 +157,14 @@ export default class playerData{
         return this.revenue;
     }
 
+    public getConsequences(decision : Decision): IConsequence[] | undefined{
+        const consequences : IConsequence[] | undefined = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
+        return consequences;
+    }
+
 
     // Updates the current state of the game
-    public getGameState():void{
+    public getGameState(): void{
         if (this.reputation <= 0){
             this.gameState = GameState.LOSE_REPUTATION;
         }
@@ -136,7 +186,7 @@ export default class playerData{
     }
 
     // Returns true if game is over 
-    public isFinished():boolean{
+    public isFinished(): boolean{
         return this.gameState !== GameState.IN_PROGRESS;
     }
     
