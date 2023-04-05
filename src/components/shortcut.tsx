@@ -3,16 +3,24 @@ import { useEffect } from "react";
 
 interface ShortCutProps {
     shortCutKey: string,
-    to: string,
+    to?: string,
+    onDo?: () => void,
 }
 
 export const ShortCut = (props: ShortCutProps) => {
-    const { shortCutKey: key, to } = props;
+    const { shortCutKey: key, to, onDo } = props;
     const router = useRouter();
 
     const handleShortCut = () => {
+        // Do something
+        if (onDo) {
+            onDo();
+            return;
+        } 
         // Navigate to the specified page
-        router.push(to);
+        if (to) {
+            router.push(to);
+        }
     };
     
     useEffect(() => {
