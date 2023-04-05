@@ -18,7 +18,7 @@ enum Stat{
     REVENUE,
 }
 
-enum Decision{
+export enum Decision{
     ACCEPT,
     DECLINE,
 }
@@ -26,6 +26,18 @@ enum Decision{
 
 
 export default class playerData{
+
+    static instance: playerData;
+    
+    static getInstance() {
+        if (playerData.instance) {
+            return playerData.instance;
+        } else {
+            playerData.instance = new playerData();
+            return playerData.instance;
+        }
+    }
+
     private reputation: number;
     private contentment: number;
     private privacy: number;
@@ -36,7 +48,7 @@ export default class playerData{
 
 
     // Initialization
-    public constructor(){
+    private constructor(){
         this.reputation = 50;
         this.contentment = 50;
         this.privacy = 50;
