@@ -1,9 +1,10 @@
-import playerData from '@/backend/Model';
-import Button from '@/components/Button'
+import playerData, { Decision } from '@/backend/Model';
 import Flashcard from '@/components/Flashcard';
 import { Roboto_Mono } from '@next/font/google'
 import AppIndicators from './AppIndicators';
+import ConsequenceButton from './ConsequenceButton';
 import InfoButton from './InfoButton';
+
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -33,8 +34,8 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
               <Flashcard appData={app.getCurrentApp()!}/>
             </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 justify-evenly items-center w-full h-full font-mono min-w-[400px]'>
-              <Button link='game'>Decline</Button>
-              <Button link='game'>Accept</Button>
+              <ConsequenceButton app={app} decision={Decision.DECLINE} link='consequence'>Decline</ConsequenceButton>
+              <ConsequenceButton app={app} decision={Decision.ACCEPT} link='consequence'>Accept</ConsequenceButton>
             </div>
         </div>
     </>

@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 
 const Game: NextPage = () => {
 
-  const app = new playerData();
+  const app = playerData.getInstance();
   const router = useRouter()
 
   if (app.getCurrentApp() === undefined) {
