@@ -5,6 +5,9 @@ interface ShortcutTooltipProps {
   children: any,
 }
 
+/**
+ * Component can be used to provide information about how to perform shortcuts
+ */
 const ShortcutTooltip = (props: ShortcutTooltipProps) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
