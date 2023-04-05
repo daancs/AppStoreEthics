@@ -1,9 +1,10 @@
 import Button from '@/components/Button'
 import Flashcard from '@/components/Flashcard';
-import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
 import AppIndicators from './AppIndicators';
 import InfoButton from './InfoButton';
+import { ShortCut } from './shortcut';
+import ShortcutTooltip from './ShortcutTooltip';
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -21,7 +22,10 @@ interface GamePageSkeletonProps {
 export default function GamePageSkeleton( props: GamePageSkeletonProps) {
 
   return (
-    <>
+    <>  
+        <ShortCut shortCutKey='a' to='/consequence'/>
+        <ShortCut shortCutKey='d' to='/consequence'/>
+
         <div className={`grid grid-cols-3 grid-rows-6 place-items-center gap-4 w-screen h-screen justify-center bg-cover bg-center bg-primary-bg ${roboto.variable} overflow-hidden`}>
             <AppIndicators/>
             <div className='flex col-start-3 col-end-3 row-start-1 row-end-1'>
@@ -31,8 +35,12 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
               <Flashcard/>
             </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 justify-evenly items-center w-full h-full font-mono min-w-[400px]'>
-              <Button link='game'>Decline</Button>
-              <Button link='game'>Accept</Button>
+              <ShortcutTooltip shortcutText='Accept A'>
+                <Button link='consequence'>Accept</Button>
+              </ShortcutTooltip>
+              <ShortcutTooltip shortcutText='Decline D'>
+                <Button link='consequence'>Decline</Button>
+              </ShortcutTooltip>
             </div>
         </div>
     </>
