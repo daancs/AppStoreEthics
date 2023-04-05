@@ -3,6 +3,7 @@ import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
 import ConsIndicators from './ConsIndicators';
 import { ShortCut } from './shortcut';
+import ShortcutTooltip from './ShortcutTooltip';
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -46,7 +47,9 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
             </div>
         </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 w-full h-full justify-evenly items-center font-mono'>
-                <Button link='game' bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
+                <ShortcutTooltip shortcutText='Continue Enter'>
+                    <Button link='game' bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
+                </ShortcutTooltip>
             </div>
         </div>
     </>
