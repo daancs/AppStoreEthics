@@ -3,9 +3,94 @@ import { IApp } from "./IApp";
 export default function getData(): IApp[] {
     return [
         {
-            title: "Bargain",
+            title: "bargain.",
             description: {
                 text: "App where the users can purchase and sell a range of second-hand products, such as shoes, clothes, and furniture. The seller is managing the shipment.",
+                sensitive_data: "yes",
+                user_data: "yes",
+                contact_information: "yes",
+                location_services: "yes",
+                in_app_purchases: "no",
+                advertising: "yes",
+                age_rating: "18+",
+                target_group: "anyone"
+            },
+            image_name: "app1_bargain.png",
+            accept_cons: [
+                {
+                    text: "This app made App Store gain credibility in sustainability",
+                    reputation: 25
+                },
+                {
+                    text: "App Store increased in users",
+                    revenue: 25
+                },
+                {
+                    text: "Users liked the app because they earned money from selling old things",
+                    contentment: 25
+                },
+                {
+                    text: "Some of the users gave out sensitive data to sellers",
+                    privacy: -12.5
+                }
+            ],
+            decline_cons: [
+                {
+                    text: "App Store users could not find sustainable options for shopping",
+                    reputation: -12.5,
+                    revenue: -12.5,
+                    contentment: -12.5
+                },
+                {
+                    text: "Potential users did not have to share sensitive data",
+                    privacy: 25
+                }
+            ]
+        },
+        {
+            title: "SnailChat",
+            description: {
+                text: "App where users can chat and send pictures to each other. SnailChat allows users to share their location. To lower the risk of stalking or being pressured to share location constantly, users can pause sharing without sending the other party a notification.",
+                sensitive_data: "yes",
+                user_data: "yes",
+                contact_information: "yes",
+                location_services: "yes",
+                in_app_purchases: "no",
+                advertising: "no",
+                age_rating: "12+",
+                target_group: "anyone"
+            },
+            image_name: "app2_Snailchat.png",
+            accept_cons: [
+                {
+                    text: "The users of SnailChat could control shared data and location",
+                    privacy: 25
+                },
+                {
+                    text: "The app became popular",
+                    revenue: 25
+                },
+                {
+                    text: "Some users received unwanted messages and pictures sent to them from strangers",
+                    contentment: -12.5
+                }
+            ],
+            decline_cons: [
+                {
+                    text: "App Store users sought apps with the possibility to share their location on their own terms",
+                    privacy: -12.5,
+                    revenue: -12.5
+                },
+                {
+                    text: "No users received unwanted messages or pictures from strangers",
+                    contentment: 25
+                }
+            ]
+        },
+        {
+            title: "EyeShare",
+            description: {
+                text: "App where users can connect to old and new friends. EyeShare allows users to post their thoughts, location, and images.",
                 sensitive_data: "yes",
                 user_data: "yes",
                 contact_information: "yes",
@@ -15,35 +100,112 @@ export default function getData(): IApp[] {
                 age_rating: "12+",
                 target_group: "anyone"
             },
-            image_name: "mySpyImage",
+            image_name: "app3_EyeShare.png",
             accept_cons: [
                 {
-                    text: "This app made App Store gain credibility in sustainability",
-                    reputation: 50
+                    text: "Users could communicate with friends and join groups of interest",
+                    contentment: 25
                 },
                 {
-                    text: "App Store increased in users",
-                    revenue: 50
+                    text: "The app became popular",
+                    revenue: 25
                 },
                 {
-                    text: "Users liked the app because they earned money from selling old things",
-                    contentment: 50
-                },
-                {
-                    text: "Some of the users gave out sensitive data to sellers",
+                    text: "A scandal emerges that the company has shared user data with a third party. The data was used to influence a democratic election.",
+                    reputation: -25,
                     privacy: -25
                 }
             ],
             decline_cons: [
                 {
-                    text: "App Store users could not find sustainable options for shopping",
-                    reputation: -25,
-                    revenue: -25,
+                    text: "App Store users sought apps with the possibility to connect with people",
+                    contentment: -25,
+                    revenue: -25
+                },
+                {
+                    text: "No sensitive data was shared and could not be used by third parties in an illegal context",
+                    privacy: 25,
+                    reputation: 25
+                }
+            ]
+        },
+        {
+            title: "TreasureQuest",
+            description: {
+                text: "App where users can complete a treasure hunt. TreasureQuest allows the user to play different and exciting levels.",
+                sensitive_data: "yes",
+                user_data: "no",
+                contact_information: "no",
+                location_services: "no",
+                in_app_purchases: "yes",
+                advertising: "yes",
+                age_rating: "0+",
+                target_group: "anyone"
+            },
+            image_name: "app4_TreasureQuest.png",
+            accept_cons: [
+                {
+                    text: "Some users had fun playing TreasureQuest",
+                    contentment: 12.5
+                },
+                {
+                    text: "The game prompts purchases to advance in the game and is aimed towards children",
+                    reputation: -25
+                },
+                {
+                    text: "TreasureQuest didn’t attract a big user base",
+                    revenue: -25
+                }
+            ],
+            decline_cons: [
+                {
+                    text: "Users are seeking new games on App Store",
                     contentment: -25
                 },
                 {
-                    text: "Potential users did not have to share sensitive data",
-                    privacy: 50
+                    text: "No children bought Coins within the game and no scandal happened",
+                    reputation: 12.5,
+                    revenue: 12.5
+                }
+            ]
+        },
+        {
+            title: "Qme",
+            description: {
+                text: "App where users can ask each other questions to exchange knowledge and information about a subject. The users can choose to be anonymous.",
+                sensitive_data: "no",
+                user_data: "no",
+                contact_information: "no",
+                location_services: "no",
+                in_app_purchases: "no",
+                advertising: "yes",
+                age_rating: "0+",
+                target_group: "anyone"
+            },
+            image_name: "app5_Qme.png",
+            accept_cons: [
+                {
+                    text: "Users of Qme could be anonymous and comment without creating an account",
+                    privacy: 12.5
+                },
+                {
+                    text: "Users of Qme could say mean things without being held accountable",
+                    contentment: -25
+                },
+                {
+                    text: "App Store got a bad reputation for releasing Qme",
+                    reputation: -25
+                }
+            ],
+            decline_cons: [
+                {
+                    text: "Users are seeking the possibility to express opinions anonymously online",
+                    privacy: -25
+                },
+                {
+                    text: "App Store continued to have a good reputation because no one could be bullied on Qme",
+                    contentment: 12.5,
+                    reputation: 12.5
                 }
             ]
         }
