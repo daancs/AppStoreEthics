@@ -1,5 +1,7 @@
+import playerData from '@/backend/Model';
 import GamePageSkeleton from '@/components/GamePageSkeleton';
 import { NextPage } from 'next'
+import { useRouter } from 'next/router';
 
 /**
  * The first game page of the application. Here the player can see the card and flip it,
@@ -10,9 +12,16 @@ import { NextPage } from 'next'
 
 const Game: NextPage = () => {
 
+  const app = new playerData();
+  const router = useRouter()
+
+  if (app.getCurrentApp() === undefined) {
+      router.push('/endPage')
+  }
+
   return (
     <>
-        <GamePageSkeleton/>
+        <GamePageSkeleton app={app}/>
     </>
   );
 };

@@ -162,6 +162,10 @@ export default class playerData{
         return consequences;
     }
 
+    public getCurrentApp(): IApp | undefined {
+        return this.currentApp;
+    }
+
 
     // Updates the current state of the game
     public getGameState(): void{
