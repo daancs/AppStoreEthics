@@ -7,7 +7,6 @@ interface ShortCutProps {
 }
 
 export const ShortCut = (props: ShortCutProps) => {
-    console.log("Shortcut component rendered");
     const { shortCutKey: key, to } = props;
     const router = useRouter();
 
@@ -21,7 +20,6 @@ export const ShortCut = (props: ShortCutProps) => {
             
             if (event.key === props.shortCutKey) {
                 handleShortCut();
-                console.log("hi");
             }
         };
 
