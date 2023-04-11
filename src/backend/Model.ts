@@ -184,7 +184,7 @@ export default class playerData{
         return this.revenue;
     }
 
-    public getConsequences(decision : Decision): IConsequence[] | undefined{
+    public getConsequences(decision : Decision | undefined): IConsequence[] | undefined{
         const consequences : IConsequence[] | undefined = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
         return consequences;
     }
@@ -195,6 +195,38 @@ export default class playerData{
 
     public getCurrentDecision(): Decision | undefined {
         return this.currentDesicion;
+    }
+
+    public getCurrentConsequences(){
+        return this.getConsequences(this.getCurrentDecision());
+    }
+
+    public getChange(descision: Decision):number[]{
+        const consList = this.getConsequences(descision);
+        let changeRep = 0;
+        let changeCont = 0;
+        let changePriv = 0;
+        let changeRevenue = 0;
+
+        for (let i=0; i<consList!.length; i++){
+            const name = consList![i].text;
+
+            switch (name){
+                case 'reputation':
+                    changeRep+=consList![i].reputation || 0;
+                    break;
+                case 'contentment':
+                    changeCont+=consList![i].contentment || 0;
+                    break;
+                case 'privacy':
+                    changePriv+=consList![i].privacy || 0;
+                    break;
+                default:
+                    changeRevenue+=consList![i].revenue || 0;
+            }
+        }
+
+        return [changeRep,changeCont,changePriv,changeRevenue];
     }
 
 
@@ -228,6 +260,8 @@ export default class playerData{
     public isFinished(): boolean{
         return this.gameState !== GameState.IN_PROGRESS;
     }
+
+    
     
 
 }

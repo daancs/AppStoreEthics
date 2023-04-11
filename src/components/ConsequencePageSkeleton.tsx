@@ -2,7 +2,7 @@ import playerData from '@/backend/Model';
 import Button from '@/components/Button'
 import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
-import ConsIndicators from './ConsIndicators';
+import ConsIndicatorBox from './ConsIndicatorBox';
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -34,7 +34,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
   return (
     <>
         <div className='w-screen h-screen flex flex-col justify-center items-center bg-primary-bg text-white'>
-            <ConsIndicators/>
+            <ConsIndicatorBox/>
         <div className='w-5/12'>
             {consequences!.map((consequence, index) => {
                 return (
