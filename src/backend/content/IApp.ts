@@ -20,6 +20,7 @@ export interface IApp{
 
 export interface IConsequence{
     text: string,
+    con: string,
     reputation?: number,
     contentment?: number,
     privacy?: number,

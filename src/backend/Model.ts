@@ -45,6 +45,7 @@ export default class playerData{
     private gameState: GameState;
     private apps: IApp[]; 
     private currentApp : IApp | undefined;
+    private currentDesicion : Decision | undefined;
 
 
     // Initialization
@@ -98,8 +99,22 @@ export default class playerData{
         this.calcAndUpDateValue(Stat.CONTENTMENT, consequences);
         this.calcAndUpDateValue(Stat.PRIVACY, consequences);
         this.calcAndUpDateValue(Stat.REVENUE, consequences);
+        this.updateDecision(decision);
+        this.printStats();
     }
 
+    // Prints all stats to console
+    private printStats(): void {
+        console.log("Reputation: " + this.reputation);
+        console.log("Contentment: " + this.contentment);
+        console.log("Privacy: " + this.privacy);
+        console.log("Revenue: " + this.revenue);
+    }
+
+    // Updates the current decision
+    private updateDecision(decision: Decision): void {
+        this.currentDesicion = decision;
+    }
 
     // Calculates and updates the value of a stat from a list of consequences
     private calcAndUpDateValue(stat: Stat, arr: IConsequence[]): void{
@@ -176,6 +191,10 @@ export default class playerData{
 
     public getCurrentApp(): IApp | undefined {
         return this.currentApp;
+    }
+
+    public getCurrentDecision(): Decision | undefined {
+        return this.currentDesicion;
     }
 
 

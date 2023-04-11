@@ -8,7 +8,7 @@ const Consequences: NextPage = () => {
 
     return (
         <>
-            <ConsequencePageSkeleton firstIcon={'First'} secondIcon={'Second'} thirdIcon={'Third'} fourthIcon={'Fourth'}/>
+            <ConsequencePageSkeleton app={app} firstIcon={'First'} secondIcon={'Second'} thirdIcon={'Third'} fourthIcon={'Fourth'}/>
         </>
     )
 }
