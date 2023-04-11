@@ -1,5 +1,6 @@
 import playerData, { Decision } from "@/backend/Model";
 import Link from "next/link.js";
+import { useRouter } from "next/router";
 
 interface ButtonProps {
     children: React.ReactNode;
@@ -16,8 +17,11 @@ interface ButtonProps {
  */
 const ConsequenceButton = (props: ButtonProps) => {
 
+    const router = useRouter();
+
     const handleClick = () => {
         props.app.updateStats(props.decision)
+        router.push(`/${props.link}`)
     }
 
     return (
