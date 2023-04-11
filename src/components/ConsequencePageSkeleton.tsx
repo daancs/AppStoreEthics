@@ -36,7 +36,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
         <div className='w-screen h-screen flex flex-col justify-center items-center bg-primary-bg text-white'>
             <ConsIndicatorBox/>
         <div className='w-5/12'>
-            {consequences!.map((consequence, index) => {
+            {consequences?.map((consequence, index) => {
                 return (
                     <div key={index} className="flex justify-between items-center mb-5">
                         <div className='mr-5'>

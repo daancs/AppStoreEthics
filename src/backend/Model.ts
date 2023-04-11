@@ -45,7 +45,7 @@ export default class playerData{
     private gameState: GameState;
     private apps: IApp[]; 
     private currentApp : IApp | undefined;
-    private currentDesicion : Decision | undefined;
+    private currentDecision : Decision | undefined;
 
 
     // Initialization
@@ -113,7 +113,7 @@ export default class playerData{
 
     // Updates the current decision
     private updateDecision(decision: Decision): void {
-        this.currentDesicion = decision;
+        this.currentDecision = decision;
     }
 
     // Calculates and updates the value of a stat from a list of consequences
@@ -194,7 +194,7 @@ export default class playerData{
     }
 
     public getCurrentDecision(): Decision | undefined {
-        return this.currentDesicion;
+        return this.currentDecision;
     }
 
     public getCurrentConsequences(){
