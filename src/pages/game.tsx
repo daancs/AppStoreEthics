@@ -16,7 +16,7 @@ const Game  = () => {
   const router = useRouter();
 
   if (app.isFinished()) {
-      console.log('empty list');
+      console.log('game ended');
       router.push('/endPage');
   }
 
