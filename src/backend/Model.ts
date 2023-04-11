@@ -2,7 +2,7 @@
 import { IApp, IConsequence } from './content/IApp';
 import getData from './content/Content';
 
-enum GameState{
+export enum GameState{
     IN_PROGRESS,
     WIN,
     LOSE_REPUTATION,
@@ -56,7 +56,6 @@ export default class playerData{
         this.revenue = 50;
         this.gameState = GameState.IN_PROGRESS;
         this.apps = this.initApps();
-        this.nextApp();
     }
 
 
@@ -81,6 +80,7 @@ export default class playerData{
     // Call to get next app (will set currentApp to undefined if empty)
     public nextApp(): void{
         this.currentApp = this.apps.pop();
+        console.log('next app: ' + this.currentApp?.title);
     }
 
     // Takes the player's decision and updates all values accordingly using the current app
@@ -199,7 +199,7 @@ export default class playerData{
 
 
     // Updates the current state of the game
-    public getGameState(): void{
+    public setGameState(): void{
         if (this.reputation <= 0){
             this.gameState = GameState.LOSE_REPUTATION;
         }
@@ -218,6 +218,10 @@ export default class playerData{
         else {
             this.gameState = GameState.IN_PROGRESS;
         }
+    }
+
+    public getGameState(): GameState{
+        return this.gameState;
     }
 
     // Returns true if game is over 

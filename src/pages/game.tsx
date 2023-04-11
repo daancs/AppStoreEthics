@@ -10,20 +10,26 @@ import { useRouter } from 'next/router';
  * @returns the first game page
  */
 
-const Game: NextPage = () => {
+const Game  = () => {
 
   const app = playerData.getInstance();
-  const router = useRouter()
+  const router = useRouter();
 
-  if (app.getCurrentApp() === undefined) {
-      router.push('/endPage')
+  if (app.isFinished()) {
+      console.log('empty list');
+      router.push('/endPage');
   }
 
-  return (
-    <>
-        <GamePageSkeleton app={app}/>
-    </>
-  );
+  else {
+    // Update values for model
+    app.nextApp();
+    app.setGameState();
+    return (
+      <>
+          <GamePageSkeleton app={app}/>
+      </>
+    );
+  }
 };
 
 export default Game;
