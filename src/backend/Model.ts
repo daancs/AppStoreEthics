@@ -2,7 +2,7 @@
 import { IApp, IConsequence } from './content/IApp';
 import getData from './content/Content';
 
-export enum GameState{
+export enum GameState {
     IN_PROGRESS,
     WIN,
     LOSE_REPUTATION,
@@ -11,24 +11,24 @@ export enum GameState{
     LOSE_REVENUE,
 }
 
-enum Stat{
+enum Stat {
     REPUTATION,
     CONTENTMENT,
     PRIVACY,
     REVENUE,
 }
 
-export enum Decision{
+export enum Decision {
     ACCEPT,
     DECLINE,
 }
 
 
 
-export default class playerData{
+export default class playerData {
 
-    static instance: playerData;
-    
+    static instance: playerData | null;
+
     static getInstance() {
         if (playerData.instance) {
             return playerData.instance;
@@ -38,36 +38,41 @@ export default class playerData{
         }
     }
 
+    static resetInstance() {
+        playerData.instance = null;
+    }
+
     private reputation: number;
     private contentment: number;
     private privacy: number;
     private revenue: number;
     private gameState: GameState;
-    private apps: IApp[]; 
-    private currentApp : IApp | undefined;
-    private currentDecision : Decision | undefined;
+    private apps: IApp[];
+    private currentApp: IApp | undefined;
+    private currentDecision: Decision = Decision.ACCEPT;
 
 
     // Initialization
-    private constructor(){
+    private constructor() {
         this.reputation = 50;
         this.contentment = 50;
         this.privacy = 50;
         this.revenue = 50;
         this.gameState = GameState.IN_PROGRESS;
         this.apps = this.initApps();
+        this.nextApp()
     }
 
 
     // Get data from Content.ts and shuffle it
-    private initApps (): IApp[]{
-        const data : IApp[] = getData();
+    private initApps(): IApp[] {
+        const data: IApp[] = getData();
         return this.shuffle(data);
     }
 
-    private shuffle (arr: any[]): any[]{
-        for (let i = arr.length-1; i > 0; i--){
-            const j = Math.floor(Math.random() * (i+1)); // 0 <= j <= i
+    private shuffle(arr: any[]): any[] {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); // 0 <= j <= i
             const tmp = arr[j];
             arr[j] = arr[i];
             arr[i] = tmp;
@@ -78,19 +83,20 @@ export default class playerData{
 
 
     // Call to get next app (will set currentApp to undefined if empty)
-    public nextApp(): void{
+    public nextApp(): void {
+        console.log("apps array: " + this.apps)
         this.currentApp = this.apps.pop();
         console.log('next app: ' + this.currentApp?.title);
     }
 
     // Takes the player's decision and updates all values accordingly using the current app
-    public updateStats(decision : Decision): void{
+    public updateStats(decision: Decision): void {
 
         // Set variable to hold the correct consequences depending on the decision
-        const consequences : IConsequence[] | undefined = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
+        const consequences: IConsequence[] | undefined = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
 
         // Happens if list of apps is empty i.e. the game is won
-        if (consequences === undefined){
+        if (consequences === undefined) {
             return;
         }
 
@@ -117,30 +123,30 @@ export default class playerData{
     }
 
     // Calculates and updates the value of a stat from a list of consequences
-    private calcAndUpDateValue(stat: Stat, arr: IConsequence[]): void{
+    private calcAndUpDateValue(stat: Stat, arr: IConsequence[]): void {
         const value = this.calcValue(stat, arr);
         this.updateValue(stat, value);
     }
 
 
     // Adds together all points of a stat from a list of consequences
-    private calcValue(stat: Stat, arr: IConsequence[]): number{
+    private calcValue(stat: Stat, arr: IConsequence[]): number {
         let sum = 0;
 
-        for (let i=0; i<arr.length; i++){
+        for (let i = 0; i < arr.length; i++) {
             const cons = arr[i];
-            switch(stat){
+            switch (stat) {
                 case Stat.REPUTATION:
-                    sum+=cons.reputation || 0;
+                    sum += cons.reputation || 0;
                     break;
                 case Stat.CONTENTMENT:
-                    sum+=cons.contentment || 0;
+                    sum += cons.contentment || 0;
                     break;
                 case Stat.PRIVACY:
-                    sum+=cons.privacy || 0;
+                    sum += cons.privacy || 0;
                     break;
                 default:
-                    sum+=cons.revenue || 0;
+                    sum += cons.revenue || 0;
             }
         }
 
@@ -148,44 +154,47 @@ export default class playerData{
     }
 
     // Updates value according to stat, upper limit is 100
-    private updateValue(stat: Stat, value = 0): void{
-        switch(stat){
+    private updateValue(stat: Stat, value = 0): void {
+        switch (stat) {
             case Stat.REPUTATION:
-                this.reputation = Math.min(100, this.reputation+value);
+                this.reputation = Math.min(100, this.reputation + value);
                 return;
             case Stat.CONTENTMENT:
-                this.contentment = Math.min(100, this.contentment+value);
+                this.contentment = Math.min(100, this.contentment + value);
                 return;
             case Stat.PRIVACY:
-                this.privacy = Math.min(100, this.privacy+value);
+                this.privacy = Math.min(100, this.privacy + value);
                 return;
             default:
-                this.revenue = Math.min(100,this.revenue+value);
+                this.revenue = Math.min(100, this.revenue + value);
         }
     }
 
-    
+
 
 
     // Getters
-    public getReputation():number{
+    public getReputation(): number {
         return this.reputation;
     }
 
-    public getContentment():number{
+    public getContentment(): number {
         return this.contentment;
     }
 
-    public getPrivacy():number{
+    public getPrivacy(): number {
         return this.privacy;
     }
 
-    public getRevenue():number{
+    public getRevenue(): number {
         return this.revenue;
     }
 
-    public getConsequences(decision : Decision | undefined): IConsequence[] | undefined{
-        const consequences : IConsequence[] | undefined = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
+    public getConsequences(decision: Decision): IConsequence[] {
+        if (this.currentApp === undefined) {
+            throw new Error('currentApp is undefined');
+        }
+        const consequences: IConsequence[]  = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
         return consequences;
     }
 
@@ -193,58 +202,62 @@ export default class playerData{
         return this.currentApp;
     }
 
-    public getCurrentDecision(): Decision | undefined {
-        return this.currentDecision;
+    public getCurrentDecision(): Decision {
+        if (this.currentDecision === undefined) {
+            throw new Error('currentDecision is undefined');
+        }
+        return this.currentDecision!;
     }
 
-    public getCurrentConsequences(){
+    public getCurrentConsequences() {
         return this.getConsequences(this.getCurrentDecision());
     }
 
-    public getChange(descision: Decision):number[]{
+    public getChange(descision: Decision): number[] {
         const consList = this.getConsequences(descision);
         let changeRep = 0;
         let changeCont = 0;
         let changePriv = 0;
         let changeRevenue = 0;
 
-        for (let i=0; i<consList!.length; i++){
+
+        for (let i = 0; i < consList!.length; i++) {
             const name = consList![i].text;
 
-            switch (name){
+            switch (name) {
                 case 'reputation':
-                    changeRep+=consList![i].reputation || 0;
+                    changeRep += consList![i].reputation || 0;
                     break;
                 case 'contentment':
-                    changeCont+=consList![i].contentment || 0;
+                    changeCont += consList![i].contentment || 0;
                     break;
                 case 'privacy':
-                    changePriv+=consList![i].privacy || 0;
+                    changePriv += consList![i].privacy || 0;
                     break;
                 default:
-                    changeRevenue+=consList![i].revenue || 0;
+                    changeRevenue += consList![i].revenue || 0;
             }
         }
 
-        return [changeRep,changeCont,changePriv,changeRevenue];
+        return [changeRep, changeCont, changePriv, changeRevenue];
     }
 
 
     // Updates the current state of the game
-    public setGameState(): void{
-        if (this.reputation <= 0){
+    public setGameState(): void {
+        if (this.reputation <= 0) {
             this.gameState = GameState.LOSE_REPUTATION;
         }
-        else if (this.contentment <= 0){
+        else if (this.contentment <= 0) {
             this.gameState = GameState.LOSE_CONTENTMENT;
         }
-        else if (this.privacy <= 0){
+        else if (this.privacy <= 0) {
             this.gameState = GameState.LOSE_PRIVACY;
         }
-        else if (this.revenue <= 0){
+        else if (this.revenue <= 0) {
             this.gameState = GameState.LOSE_REVENUE;
         }
-        else if (this.apps.length === 0){
+        else if (this.apps.length === 0) {
             this.gameState = GameState.WIN;
         }
         else {
@@ -252,16 +265,16 @@ export default class playerData{
         }
     }
 
-    public getGameState(): GameState{
+    public getGameState(): GameState {
         return this.gameState;
     }
 
     // Returns true if game is over 
-    public isFinished(): boolean{
+    public isFinished(): boolean {
         return this.gameState !== GameState.IN_PROGRESS;
     }
 
-    
-    
+
+
 
 }

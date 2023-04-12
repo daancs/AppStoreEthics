@@ -1,16 +1,20 @@
 import GameIcon from "./GameIcon";
 import Arrow from "./Arrow";
-import playerData from "@/backend/Model";
+import playerData, { Decision } from "@/backend/Model";
 import ConsIndicator from "./ConsIndicator";
 
+interface ConsIndicatorProps {
+    currentDecision: Decision;
+}
+    
 /**
  * Responsible for displaying which consequences have been affected, and whether the change
  * has been positive or not. Also shows the total amount of "progress" each status has.
  * @returns 
  */
-export default function ConsIndicators() {
+export default function ConsIndicators(props: ConsIndicatorProps) {
     const app = playerData.getInstance();
-    const changeValues = app.getChange(app.getCurrentDecision()!);
+    const changeValues = app.getChange(props.currentDecision);
     
 
     return (

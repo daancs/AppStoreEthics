@@ -28,13 +28,14 @@ interface ConsequencePageSkeletonProps {
 export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonProps) {
 
     const app = props.app
+    const currentDecision = app.getCurrentDecision()
 
-    const consequences = app.getConsequences(app.getCurrentDecision()!)
+    const consequences = app.getCurrentConsequences()
 
   return (
     <>
         <div className='w-screen h-screen flex flex-col justify-center items-center bg-primary-bg text-white'>
-            <ConsIndicatorBox/>
+            <ConsIndicatorBox currentDecision={currentDecision} />
         <div className='w-5/12'>
             {consequences?.map((consequence, index) => {
                 return (
@@ -49,7 +50,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
             }
         </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 w-full h-full justify-evenly items-center font-mono'>
-                <Button link='game' bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
+                <Button app={app} link='game' bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
             </div>
         </div>
     </>

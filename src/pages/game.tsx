@@ -2,6 +2,7 @@ import playerData from '@/backend/Model';
 import GamePageSkeleton from '@/components/GamePageSkeleton';
 import { NextPage } from 'next'
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 /**
  * The first game page of the application. Here the player can see the card and flip it,
@@ -10,26 +11,24 @@ import { useRouter } from 'next/router';
  * @returns the first game page
  */
 
-const Game  = () => {
+const Game = () => {
 
   const app = playerData.getInstance();
   const router = useRouter();
-
+  app.setGameState();
+  
   if (app.isFinished()) {
-      console.log('game ended');
-      router.push('/endPage');
-  }
+    console.log('game ended');
+    router.push('/endPage');
+  } 
 
-  else {
-    // Update values for model
-    app.nextApp();
-    app.setGameState();
-    return (
-      <>
-          <GamePageSkeleton app={app}/>
-      </>
-    );
-  }
-};
+  
+  return (
+    <>
+      <GamePageSkeleton app={app} />
+    </>
+  );
+}
+
 
 export default Game;

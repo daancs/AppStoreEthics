@@ -13,13 +13,6 @@ interface FlashcardProps {
     appData: IApp;
 }
 
-// example app to get the idea of the layout
-const mySpyApp = {
-    title: 'mySpy Tracker App',
-    image: mySpyImage,
-    description: "\u2022 Check the real time GPS location of their beloved ones\n \u2022 Get detailed past locations history for 3 month back\n \u2022 See their beloved one\'s contact list\n \u2022 Send an alarm to your beloved one\'s phone if needed"
-}
-
 /**
  * A skeleton for the structure of the flashcard.
  * 
@@ -42,34 +35,34 @@ export default function Flashcard(props: FlashcardProps) {
                 <div className={`relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${flip ? '[transform:rotateY(180deg)]' : ''}`} onClick={() => handleOnClick()}>
                     <div className={`relative inset-0 rounded-xl shadow-xl bg-slate-100 [backface-visibility:hidden]`}>
                         <div className={`flex items-center justify-center`}>
-                            <Image src={`/img/${currentApp.image_name}`} width={100} height={100} alt={currentApp.image_alt ?? "app image"} className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
+                            <Image src={`/img/${currentApp?.image_name}`} width={100} height={100} alt={currentApp?.image_alt ?? "app image"} className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
                         </div>              
                     </div>
                     <div className='absolute inset-0 h-full w-full rounded-xl shadow-xl bg-slate-100 px-10 text-black [transform:rotateY(180deg)] [backface-visibility:hidden]'>
                         <div className='flex flex-col rounded-xl'>
                             <div className='text-2xl py-6 text-center'>
-                                {currentApp.title}
+                                {currentApp?.title}
                             </div>
                             <span className='text-base'>
-                                Specification of {currentApp.title}:
+                                Specification of {currentApp?.title}:
                                 <div className='h-fit px-4 text-sm py-2'>
-                                    <span className='font-bold'>Description: </span><span>{currentApp.description.text}</span>
+                                    <span className='font-bold'>Description: </span><span>{currentApp?.description.text}</span>
                                     <br />
-                                    <span className='font-bold'>Data-gathering: </span><span>{currentApp.description.sensitive_data}</span>
+                                    <span className='font-bold'>Data-gathering: </span><span>{currentApp?.description.sensitive_data}</span>
                                     <br />
-                                    <span className='font-bold'>Data Usage: </span><span>{currentApp.description.user_data}</span>
+                                    <span className='font-bold'>Data Usage: </span><span>{currentApp?.description.user_data}</span>
                                     <br />
-                                    <span className='font-bold'>Location: </span><span>{currentApp.description.location_services} </span>
+                                    <span className='font-bold'>Location: </span><span>{currentApp?.description.location_services} </span>
                                     <br />
-                                    <span className='font-bold'>Creator: </span><span>{currentApp.description.contact_information}</span>
+                                    <span className='font-bold'>Creator: </span><span>{currentApp?.description.contact_information}</span>
                                     <br />
-                                    <span className='font-bold'>In-app purchases: </span><span>{currentApp.description.in_app_purchases}</span>
+                                    <span className='font-bold'>In-app purchases: </span><span>{currentApp?.description.in_app_purchases}</span>
                                     <br />
-                                    <span className='font-bold'>Advertisements: </span> <span>{currentApp.description.advertising}</span>
+                                    <span className='font-bold'>Advertisements: </span> <span>{currentApp?.description.advertising}</span>
                                     <br />
-                                    <span className='font-bold'>Age rating: </span><span>{currentApp.description.age_rating}</span>
+                                    <span className='font-bold'>Age rating: </span><span>{currentApp?.description.age_rating}</span>
                                     <br />
-                                    <span className='font-bold'>Target group: </span><span>{currentApp.description.target_group}</span>
+                                    <span className='font-bold'>Target group: </span><span>{currentApp?.description.target_group}</span>
                                 </div>
                             </span>
                         </div>

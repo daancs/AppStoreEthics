@@ -67,7 +67,7 @@ const DisplayEndText : NextPage = () => {
 
 
 
-
+    playerData.resetInstance()
     
     // Show message
     return (
