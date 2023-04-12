@@ -221,11 +221,11 @@ export default class playerData {
         let changeRevenue = 0;
 
 
-        for (let i = 0; i < consList!.length; i++) {
-            changeRep += consList![i].reputation || 0;
-            changeCont += consList![i].contentment || 0;
-            changePriv += consList![i].privacy || 0;
-            changeRevenue += consList![i].revenue || 0;
+        for (let i = 0; i < consList.length; i++) {
+            changeRep += consList[i].reputation || 0;
+            changeCont += consList[i].contentment || 0;
+            changePriv += consList[i].privacy || 0;
+            changeRevenue += consList[i].revenue || 0;
             
         }
 
