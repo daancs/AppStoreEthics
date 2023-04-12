@@ -15,7 +15,7 @@ const Game = () => {
 
   const app = playerData.getInstance();
   const router = useRouter();
-  app.setGameState();
+  
   
   if (app.isFinished()) {
     console.log('game ended');

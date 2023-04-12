@@ -65,7 +65,7 @@ const DisplayEndText : NextPage = () => {
     const headline : string = obj.GameOver ? "Game Over" : "You won!";
     const desc : string = obj.Description;
 
-
+    console.log(app.getGameState());
 
     playerData.resetInstance()
     

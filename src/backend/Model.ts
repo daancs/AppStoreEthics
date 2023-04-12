@@ -222,21 +222,11 @@ export default class playerData {
 
 
         for (let i = 0; i < consList!.length; i++) {
-            const name = consList![i].text;
-
-            switch (name) {
-                case 'reputation':
-                    changeRep += consList![i].reputation || 0;
-                    break;
-                case 'contentment':
-                    changeCont += consList![i].contentment || 0;
-                    break;
-                case 'privacy':
-                    changePriv += consList![i].privacy || 0;
-                    break;
-                default:
-                    changeRevenue += consList![i].revenue || 0;
-            }
+            changeRep += consList![i].reputation || 0;
+            changeCont += consList![i].contentment || 0;
+            changePriv += consList![i].privacy || 0;
+            changeRevenue += consList![i].revenue || 0;
+            
         }
 
         return [changeRep, changeCont, changePriv, changeRevenue];
