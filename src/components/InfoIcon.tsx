@@ -13,14 +13,14 @@ interface IconProps {
 
 export default function InfoIcon(props: IconProps) {
     return (
-         <div>
-            <div className="flex mt-10 ml-20 mb-10">
+         <>
+            <div className="flex items-start p-8">
                 <div >
                     <GameIcon iconName={props.iconName}/>
                 </div>
-                <p className="float-right ml-5 mr-20 w-65 mt-5 text-white">{props.desc}</p>
+                <p className="float-left w-65 max-h-[80px] px-4 text-white">{props.desc}</p>
             </div>
             
-        </div>
+        </>
     )
 }
