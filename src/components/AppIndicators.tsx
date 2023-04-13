@@ -1,6 +1,7 @@
 import Dot from "./Dot";
 import GameIcon from "./GameIcon";
-import {Displaying, SizeChange } from "./GamePageSkeleton";
+import {SizeChange } from "./GamePageSkeleton";
+
 
 
 
@@ -8,6 +9,9 @@ export interface AppIndicators{
     sizesToDisplay: SizeChange[];
 }
 
+
+// Assumes sizesToDisplay contains four sizes for the dots in the following order:
+// Reputation, contentment, privacy, revenue
 export default function AppIndicators(props: AppIndicators) {
     const changeRep = props.sizesToDisplay[0];
     const changeCont = props.sizesToDisplay[1];
@@ -28,7 +32,7 @@ export default function AppIndicators(props: AppIndicators) {
             </div>
             <div className="flex flex-col">
                 <Dot size={changePriv}/>
-                <GameIcon  hoverable={true} iconName={"privacy"} appInd={true} willChange={false} />
+                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} willChange={false} />
             </div>
             <div className="flex flex-col">
                 <Dot size={changeRevenue}/>

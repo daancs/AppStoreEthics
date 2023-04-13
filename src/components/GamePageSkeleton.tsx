@@ -37,23 +37,25 @@ export enum Displaying{
 export default function GamePageSkeleton( props: GamePageSkeletonProps) {
 
   const app = props.app;
+
+  // Use to set the sizes of dots to be displayed above icons
   const noDotsVisible = [SizeChange.NONE, SizeChange.NONE, SizeChange.NONE, SizeChange.NONE];
-
-
   const [sizesToDisplay, setSizesToDisplay] = useState(noDotsVisible);
 
+  // Triggers when hovering 'accept' or 'decline'
   const onHover = (display: Displaying) : void => {
-    calcSizesToDisplay(display);
-    console.log("Displaying " + display);
+    calcAndSetSizes(display);
   }
 
+  // triggers when not hovering over any button
   const onNotHover = () : void => {
-    calcSizesToDisplay(Displaying.NO_CONS);
-    console.log("Stop displaying");
+    calcAndSetSizes(Displaying.NO_CONS);
   }
 
-  // Calculate what for AppIndicator to display depending on where the player is hovering
-  const calcSizesToDisplay = (display : Displaying) : void => {
+  /* Sets and calculates the sizes of the dots, depending on if the player is hovering over 
+     accept, decline or none of them
+     */
+  const calcAndSetSizes = (display : Displaying) : void => {
      if (display === Displaying.NO_CONS){
         setSizesToDisplay(noDotsVisible);
         return;
@@ -74,7 +76,7 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
         }
      }
 
-     setSizesToDisplay(sizes);
+     return setSizesToDisplay(sizes);
   }
 
   
