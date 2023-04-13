@@ -7,6 +7,8 @@ interface ButtonProps {
     link: string;
     decision: Decision;
     app: playerData;
+    onHover : () => void;
+    onNotHover: () => void;
 }
 
 
@@ -24,10 +26,19 @@ const ConsequenceButton = (props: ButtonProps) => {
         router.push(`/${props.link}`)
     }
 
+    const onMouseOver = () => {
+        props.onHover();
+      };
+
+    const onMouseLeaving = () => {
+        props.onNotHover();
+    }
+    
+
     return (
         <>
             <Link href={`/${props.link}`}>
-                <button onClick={() => handleClick()} className={`text-start tracking-wide w-full text-3xl rounded-xl py-2 px-8 hover:bg-slate-400 bg-slate-100 text-black`}>
+                <button onClick={() => handleClick()} onMouseOver={() => onMouseOver()} onMouseLeave={() => onMouseLeaving()} className={`text-start tracking-wide w-full text-3xl rounded-xl py-2 px-8 hover:bg-slate-400 bg-slate-100 text-black`}>
                     {props.children}
                 </button>
             </Link>

@@ -213,6 +213,9 @@ export default class playerData {
         return this.getConsequences(this.getCurrentDecision());
     }
 
+
+    // Calculate how much would change on all stats if the player takes a decision about the current app
+    // Use in frontend parts to display dots in game-page and color changes in consequence-page
     public getChange(descision: Decision): number[] {
         const consList = this.getConsequences(descision);
         let changeRep = 0;
