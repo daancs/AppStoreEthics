@@ -107,6 +107,7 @@ export default class playerData {
         this.calcAndUpDateValue(Stat.REVENUE, consequences);
         this.updateDecision(decision);
         this.printStats();
+        this.setGameState();
     }
 
     // Prints all stats to console

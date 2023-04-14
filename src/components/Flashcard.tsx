@@ -42,7 +42,7 @@ export default function Flashcard(props: FlashcardProps) {
                 <div className={`relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${flip ? '[transform:rotateY(180deg)]' : ''}`} onClick={() => handleOnClick()}>
                     <div className={`relative inset-0 rounded-xl shadow-xl bg-slate-100 [backface-visibility:hidden]`}>
                         <div className={`flex items-center justify-center`}>
-                            <Image src={`/img/${currentApp?.image_name}`} width={100} height={100} alt={currentApp?.image_alt ?? "app image"} className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
+                            <Image src={`/img/${currentApp?.image_name}`} width={300} height={300} alt={currentApp?.image_alt ?? "app image"} className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
                         </div>              
                     </div>
                     <div className='absolute inset-0 h-full w-full rounded-xl shadow-xl bg-slate-100 px-10 text-black [transform:rotateY(180deg)] [backface-visibility:hidden]'>
