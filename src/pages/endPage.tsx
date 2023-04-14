@@ -4,6 +4,8 @@ import { TypeAnimation } from 'react-type-animation'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Playbutton from '@/components/Playbutton'
+import playerData, { GameState } from '@/backend/Model'
+
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -14,16 +16,13 @@ interface GameOverProps {
     Description : string
 }
 
-
-
-let messageLibrary: Map<string, string> = new Map([
-    ["win", "Congratulations. The company has run successfully under your management."],
-    ["lose_privacy", "You are fired. You don't seem to be concerned about our users' safety."],
-    ["lose_reputation", "You are fired. The reputation of our company is below zero."],
-    ["lose_contentment", "You are fired. The users will never buy another product from us again."],
-    ["lose_revenue", "You are fired. The company has gone bankrupt."]
+let messageLibrary: Map<GameState, string> = new Map([
+    [GameState.WIN, "Congratulations. The company has run successfully under your management."],
+    [GameState.LOSE_PRIVACY, "You are fired. You don't seem to be concerned about our users' safety."],
+    [GameState.LOSE_REPUTATION, "You are fired. The reputation of our company is below zero."],
+    [GameState.LOSE_CONTENTMENT, "You are fired. The users will never buy another product from us again."],
+    [GameState.LOSE_REVENUE, "You are fired. The company has gone bankrupt."]
 ]);
-
 
 
 
@@ -54,7 +53,8 @@ const DisplayEndText : NextPage = () => {
     
 
     // Decide what message should be displayed
-    const tmp_desc = messageLibrary.get("lose_reputation");
+    const app = playerData.getInstance();
+    const tmp_desc = messageLibrary.get(app.getGameState());
 
 
     const obj:GameOverProps = {
@@ -65,9 +65,9 @@ const DisplayEndText : NextPage = () => {
     const headline : string = obj.GameOver ? "Game Over" : "You won!";
     const desc : string = obj.Description;
 
+    console.log(app.getGameState());
 
-
-
+    playerData.resetInstance()
     
     // Show message
     return (
