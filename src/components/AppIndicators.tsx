@@ -24,19 +24,19 @@ export default function AppIndicators(props: AppIndicators) {
  <div className={`w-[450px] flex col-start-2 col-end-2 row-start-1 row-end-1 justify-evenly items-center h-full font-mono`}>
             <div className="flex flex-col">
                 <Dot size={changeRep} />
-                <GameIcon hoverable={true} iconName={"reputation"} appInd={true} willChange={false} />
+                <GameIcon hoverable={true} iconName={"reputation"} appInd={true} />
             </div>
             <div className="flex flex-col">
                 <Dot size={changeCont}/>
-                <GameIcon hoverable={true} iconName={"contentment"} appInd={true} willChange={true} />
+                <GameIcon hoverable={true} iconName={"contentment"} appInd={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changePriv}/>
-                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} willChange={false} />
+                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} />
             </div>
             <div className="flex flex-col">
                 <Dot size={changeRevenue}/>
-                <GameIcon hoverable={true} iconName={"revenue"} appInd={true} willChange={true} />
+                <GameIcon hoverable={true} iconName={"revenue"} appInd={true} />
                 {/* willChange needs logic behind it, implement when we have data */}
             </div>
             </div>

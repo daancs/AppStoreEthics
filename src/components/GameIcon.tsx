@@ -60,7 +60,7 @@ export default function GameIcon(props: GameIconProps) {
 
     //willChange: false, ha en margin, appInd visa pricken, appInd false visa pil
     return (
-         <div>
+         <div className='mt-2'>
             <div className={`relative ${props.width ? props.width : 'w-20'} ${props.height ? props.height : 'h-20'} ${props.hoverable ? 'hover:scale-110 hover:cursor-pointer' : ''} ${props.isConsequence ? 'bg-secondary-icon-bg' : 'bg-white'} rounded-xl shadow-xl text-black text-xl transition-all ease-in-out delay-100 overflow-hidden`}>
                 <div className="absolute z-10">
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
