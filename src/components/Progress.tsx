@@ -1,11 +1,14 @@
 interface ProgressBarProps {
   value: number;
   parentHeight: string;
+  gamePage?: boolean;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight}) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight, gamePage}) => {
     const getColor = (value: number) => {
-      if (value <= 0) {
+      if (gamePage) {
+        return '#00A1FC';
+      } else if (value <= 0) {
         return 'red';
       } else if (value < 50) {
         return 'orange';

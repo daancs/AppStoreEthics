@@ -1,12 +1,13 @@
 import Dot from "./Dot";
 import GameIcon from "./GameIcon";
 import {SizeChange } from "./GamePageSkeleton";
-
+import playerData from '@/backend/Model';
 
 
 
 export interface AppIndicators{
     sizesToDisplay: SizeChange[];
+    app: playerData;
 }
 
 
@@ -18,25 +19,30 @@ export default function AppIndicators(props: AppIndicators) {
     const changePriv = props.sizesToDisplay[2];
     const changeRevenue = props.sizesToDisplay[3];
 
+    const app = props.app;
+    let reputationValue: number = app.getReputation();
+    let contentmentValue: number = app.getContentment();
+    let privacyValue: number = app.getPrivacy();
+    let revenueValue: number = app.getRevenue();
 
     return (
       <>
  <div className={`w-[450px] flex col-start-2 col-end-2 row-start-1 row-end-1 justify-evenly items-center h-full font-mono`}>
             <div className="flex flex-col">
                 <Dot size={changeRep} />
-                <GameIcon hoverable={true} iconName={"reputation"} appInd={true} />
+                <GameIcon hoverable={true} iconName={"reputation"} appInd={true} isGamePage={true} progressValue={reputationValue} displayProgress={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changeCont}/>
-                <GameIcon hoverable={true} iconName={"contentment"} appInd={true}/>
+                <GameIcon hoverable={true} iconName={"contentment"} appInd={true} isGamePage={true} progressValue={contentmentValue} displayProgress={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changePriv}/>
-                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} />
+                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} isGamePage={true} progressValue={privacyValue} displayProgress={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changeRevenue}/>
-                <GameIcon hoverable={true} iconName={"revenue"} appInd={true} />
+                <GameIcon hoverable={true} iconName={"revenue"} appInd={true} isGamePage={true} progressValue={revenueValue} displayProgress={true}/>
                 {/* willChange needs logic behind it, implement when we have data */}
             </div>
             </div>
