@@ -30,19 +30,19 @@ export default function AppIndicators(props: AppIndicators) {
  <div className={`w-[450px] flex col-start-2 col-end-2 row-start-1 row-end-1 justify-evenly items-center h-full font-mono`}>
             <div className="flex flex-col">
                 <Dot size={changeRep} />
-                <GameIcon hoverable={true} iconName={"reputation"} appInd={true} isGamePage={true} progressValue={reputationValue} displayProgress={true}/>
+                <GameIcon hoverable={true} iconName={"reputation"} appInd={true} isUnchanged={true} progressValue={reputationValue} displayProgress={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changeCont}/>
-                <GameIcon hoverable={true} iconName={"contentment"} appInd={true} isGamePage={true} progressValue={contentmentValue} displayProgress={true}/>
+                <GameIcon hoverable={true} iconName={"contentment"} appInd={true} isUnchanged={true} progressValue={contentmentValue} displayProgress={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changePriv}/>
-                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} isGamePage={true} progressValue={privacyValue} displayProgress={true}/>
+                <GameIcon hoverable={true} iconName={"privacy"} appInd={true} isUnchanged={true} progressValue={privacyValue} displayProgress={true}/>
             </div>
             <div className="flex flex-col">
                 <Dot size={changeRevenue}/>
-                <GameIcon hoverable={true} iconName={"revenue"} appInd={true} isGamePage={true} progressValue={revenueValue} displayProgress={true}/>
+                <GameIcon hoverable={true} iconName={"revenue"} appInd={true} isUnchanged={true} progressValue={revenueValue} displayProgress={true}/>
                 {/* willChange needs logic behind it, implement when we have data */}
             </div>
             </div>

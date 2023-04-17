@@ -2,22 +2,19 @@ interface ProgressBarProps {
   value: number;
   parentHeight: string;
   gamePage?: boolean;
+  isChangePos?: boolean;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight, gamePage}) => {
-    const getColor = (value: number) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight, gamePage, isChangePos}) => {
+    const getColor = () => {
       if (gamePage) {
-        return '#00A1FC';
-      } else if (value <= 0) {
-        return 'red';
-      } else if (value < 50) {
-        return 'orange';
-      } else if (value < 80) {
-        return 'yellow';
-      } else if (value <= 100) {
-        return 'green';
+        return '#00A1FC'; // blue
+      } else if (isChangePos) {
+        return '#11F11A'; // green
+      } else if (!isChangePos) {
+        return '#FB0A18'; // red
       } else {
-        return 'gray';
+        return 'gray'; // something is wrong, display gray color
       }
     };
 
@@ -28,7 +25,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight, gamePage}
   
     return (
         <div>
-            <div style={{height: progressBarHeight, backgroundColor: getColor(value)}}/>
+            <div style={{height: progressBarHeight, backgroundColor: getColor()}}/>
         </div>
     );
   };
