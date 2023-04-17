@@ -4,7 +4,6 @@ import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
 
 import ConsIndicatorBox from './ConsIndicatorBox';
-import { ShortCut } from './shortcut';
 import ShortcutTooltip from './ShortcutTooltip';
 
 

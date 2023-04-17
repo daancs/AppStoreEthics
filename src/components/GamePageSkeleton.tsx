@@ -5,7 +5,6 @@ import AppIndicators from './AppIndicators';
 import ConsequenceButton from './ConsequenceButton';
 import InfoButton from './InfoButton';
 import { useState } from 'react';
-import { ShortCut } from './shortcut';
 import ShortcutTooltip from './ShortcutTooltip';
 
 

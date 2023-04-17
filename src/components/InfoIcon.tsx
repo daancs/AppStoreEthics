@@ -1,8 +1,3 @@
-import Image, { StaticImageData } from 'next/image';
-import repImage from '../images/reputation.png';
-import privImage from '../images/privacy.png';
-import revImage from '../images/revenue.png';
-import conImage from '../images/content.png';
 import GameIcon from './GameIcon';
 
 
