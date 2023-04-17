@@ -50,7 +50,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
             }
         </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 w-full h-full justify-evenly items-center font-mono'>
-                <Button app={app} link='game' bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
+                <Button app={app} link={app.isFinished() ? 'endPage' : 'game'} bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
             </div>
         </div>
     </>

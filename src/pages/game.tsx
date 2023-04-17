@@ -16,11 +16,11 @@ const Game = () => {
   const app = playerData.getInstance();
   const router = useRouter();
   
-  
+  /*
   if (app.isFinished()) {
     console.log('game ended');
     router.push('/endPage');
-  } 
+  } */
 
   
   return (
