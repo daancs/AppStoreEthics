@@ -14,7 +14,7 @@ interface GameIconProps {
     displayProgress?: boolean;
     hoverable?: boolean;
     appInd?: boolean; //för att consInd ska ha pilar istället för prickar!
-    willChange?: boolean; //temporärt? för att avgöra om prickarna ska synas
+    isChangePos?: boolean; // progress value dif pos or neg?
     isConsequence?: boolean; //should background be greyed out or not?
     isUnchanged?: boolean; // should background be blue
 }
@@ -49,7 +49,7 @@ export default function GameIcon(props: GameIconProps) {
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
                 </div>
                 <div className='absolute bottom-0 w-full'>
-                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue) || 50} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isUnchanged}/> : null} 
+                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue) || 50} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isUnchanged} isChangePos={props.isChangePos}/> : null} 
                 </div>
             </div>
         </div>
