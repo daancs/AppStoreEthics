@@ -12,7 +12,7 @@ const FinalEnd: NextPage = () => {
         linkText: "link"
     }
 
-    const questionsLink = "https://www.youtube.com/watch?v=dQw4w9WgXcQ;autoplay=1;fs=0;autohide=0;hd=0;";
+    const questionsLink = "https://forms.office.com/e/4EstD262AA​";
 
     return (
         <>
