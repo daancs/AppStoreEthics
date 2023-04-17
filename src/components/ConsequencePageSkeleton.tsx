@@ -44,11 +44,11 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
         <div className='w-5/12'>
             {consequences?.map((consequence, index) => {
                 return (
-                    <div key={index} className="flex justify-between items-center mb-5">
+                    <div key={index} className="flex justify-normal items-stretch mb-5">
                         <div className='mr-5'>
                             <GameIcon iconName={consequence.con} isConsequence={true}/>
                         </div>
-                        <span className='text-2xl flex flex-wrap ml-2'>{consequence.text}</span>
+                        <span className='text-2xl ml-2'>{consequence.text}</span>
                     </div>
                 )   
             })
