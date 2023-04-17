@@ -16,6 +16,7 @@ interface GameIconProps {
     appInd?: boolean; //för att consInd ska ha pilar istället för prickar!
     willChange?: boolean; //temporärt? för att avgöra om prickarna ska synas
     isConsequence?: boolean; //should background be greyed out or not?
+    isGamePage?: boolean; // should background be blue
 }
 
 /** 
@@ -60,13 +61,13 @@ export default function GameIcon(props: GameIconProps) {
 
     //willChange: false, ha en margin, appInd visa pricken, appInd false visa pil
     return (
-         <div>
+         <div className='mt-2'>
             <div className={`relative ${props.width ? props.width : 'w-20'} ${props.height ? props.height : 'h-20'} ${props.hoverable ? 'hover:scale-110 hover:cursor-pointer' : ''} ${props.isConsequence ? 'bg-secondary-icon-bg' : 'bg-white'} rounded-xl shadow-xl text-black text-xl transition-all ease-in-out delay-100 overflow-hidden`}>
                 <div className="absolute z-10">
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
                 </div>
                 <div className='absolute bottom-0 w-full'>
-                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue) || 50} parentHeight={`${props.height ? props.height : '20'}`}/> : null} 
+                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue) || 50} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isGamePage}/> : null} 
                 </div>
             </div>
         </div>

@@ -2,7 +2,11 @@ import playerData from '@/backend/Model';
 import Button from '@/components/Button'
 import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
+
 import ConsIndicatorBox from './ConsIndicatorBox';
+import { ShortCut } from './shortcut';
+import ShortcutTooltip from './ShortcutTooltip';
+
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
 
@@ -34,6 +38,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
 
   return (
     <>
+        {/* <ShortCut shortCutKey='Enter' to='/game'/> */}
         <div className='w-screen h-screen flex flex-col justify-center items-center bg-primary-bg text-white'>
             <ConsIndicatorBox currentDecision={currentDecision} />
         <div className='w-5/12'>

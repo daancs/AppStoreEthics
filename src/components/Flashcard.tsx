@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import mySpyImage from 'src/images/mySpy.png';
 import { IApp } from '@/backend/content/IApp';
+import { ShortCut } from './shortcut';
+import ShortcutTooltip from './ShortcutTooltip';
+
 
 // interface idea of later usage
 interface FlashcardProps {
@@ -31,11 +34,15 @@ export default function Flashcard(props: FlashcardProps) {
     const currentApp = props.appData;
 
     return (
+            <>
+            <ShortCut shortCutKey='f' onDo={handleOnClick}/>
             <div className='h-[60vh] w-[25vw] min-h-[60vh] min-w-[400px] [perspective:1000px] hover:cursor-pointer transition-all ease-in-out duration-500 hover:scale-105'>
+
+              <ShortcutTooltip shortcutText='Flip F'>
                 <div className={`relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] ${flip ? '[transform:rotateY(180deg)]' : ''}`} onClick={() => handleOnClick()}>
                     <div className={`relative inset-0 rounded-xl shadow-xl bg-slate-100 [backface-visibility:hidden]`}>
                         <div className={`flex items-center justify-center`}>
-                            <Image src={`/img/${currentApp?.image_name}`} width={100} height={100} alt={currentApp?.image_alt ?? "app image"} className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
+                            <Image src={`/img/${currentApp?.image_name}`} width={300} height={300} alt={currentApp?.image_alt ?? "app image"} className={`rounded-xl ${props.width ? props.width : 'w-[300px]'} ${props.height ? props.height : 'h-[60vh]'} max-h-full min-h-full`}/>
                         </div>              
                     </div>
                     <div className='absolute inset-0 h-full w-full rounded-xl shadow-xl bg-slate-100 px-10 text-black [transform:rotateY(180deg)] [backface-visibility:hidden]'>
@@ -64,10 +71,12 @@ export default function Flashcard(props: FlashcardProps) {
                                     <br />
                                     <span className='font-bold'>Target group: </span><span>{currentApp?.description.target_group}</span>
                                 </div>
-                            </span>
+                                </span>
+                          </div>
                         </div>
                     </div>
-                </div>
+                </ShortcutTooltip>
             </div>
+            </>
     );
 };

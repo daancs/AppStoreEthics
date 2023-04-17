@@ -5,6 +5,8 @@ import AppIndicators from './AppIndicators';
 import ConsequenceButton from './ConsequenceButton';
 import InfoButton from './InfoButton';
 import { useState } from 'react';
+import { ShortCut } from './shortcut';
+import ShortcutTooltip from './ShortcutTooltip';
 
 
 const roboto = Roboto_Mono({ subsets: ['latin'], variable: '--font-roboto-mono' })
@@ -83,9 +85,12 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
 
 
   return (
-    <>
+    <>  
+        {/* <ShortCut shortCutKey='a' to='/consequence'/>
+        <ShortCut shortCutKey='d' to='/consequence'/> */}
+
         <div className={`grid grid-cols-3 grid-rows-6 place-items-center gap-4 w-screen h-screen justify-center bg-cover bg-center bg-primary-bg ${roboto.variable} overflow-hidden`}>
-            <AppIndicators sizesToDisplay={sizesToDisplay}/>
+            <AppIndicators sizesToDisplay={sizesToDisplay} app={app}/>
             <div className='flex col-start-3 col-end-3 row-start-1 row-end-1'>
               <InfoButton/>
             </div>
@@ -93,8 +98,12 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
               <Flashcard appData={app.getCurrentApp()!}/>
             </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 justify-evenly items-center w-full h-full font-mono min-w-[400px]'>
-              <ConsequenceButton onHover = {() => onHover(Displaying.ACCEPT_CONS)} onNotHover = {() => onNotHover()} decision={Decision.ACCEPT} app={app} link='consequence'>Decline</ConsequenceButton>
-              <ConsequenceButton onHover = {() => onHover(Displaying.DECLINE_CONS)} onNotHover = {() => onNotHover()} decision={Decision.DECLINE} app={app} link='consequence'>Accept</ConsequenceButton>
+              {/* <ShortcutTooltip shortcutText='Accept A'> */}
+                <ConsequenceButton onHover = {() => onHover(Displaying.ACCEPT_CONS)} onNotHover = {() => onNotHover()} decision={Decision.ACCEPT} app={app} link='consequence'>Accept</ConsequenceButton>
+              {/* </ShortcutTooltip> */}
+              {/* <ShortcutTooltip shortcutText='Decline D'> */}
+                <ConsequenceButton onHover = {() => onHover(Displaying.DECLINE_CONS)} onNotHover = {() => onNotHover()} decision={Decision.DECLINE} app={app} link='consequence'>Decline</ConsequenceButton>
+              {/* </ShortcutTooltip> */}
             </div>
         </div>
     </>
