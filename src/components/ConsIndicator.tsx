@@ -8,11 +8,14 @@ export interface Indicator{
 }
 
 export default function ConsIndicator(prop: Indicator){
+    const str = prop.name;
+    const UpperCaseStr = str.charAt(0).toUpperCase() + str.slice(1);
+
     return (
     <div className="flex direction flex-col items-center">
         <Arrow pointUp={prop.change>0} visible={prop.change!=0}/>
         <GameIcon iconName={prop.name} progressValue={prop.value} displayProgress={true} hoverable={false}/>
-        <span>{prop.name.charAt(0).toUpperCase()}</span>
+        <span>{UpperCaseStr}</span>
     </div>
     );
 }
