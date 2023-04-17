@@ -98,12 +98,12 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
               <Flashcard appData={app.getCurrentApp()!}/>
             </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 justify-evenly items-center w-full h-full font-mono min-w-[400px]'>
-              {/* <ShortcutTooltip shortcutText='Accept A'> */}
-                <ConsequenceButton onHover = {() => onHover(Displaying.ACCEPT_CONS)} onNotHover = {() => onNotHover()} decision={Decision.ACCEPT} app={app} link='consequence'>Accept</ConsequenceButton>
-              {/* </ShortcutTooltip> */}
-              {/* <ShortcutTooltip shortcutText='Decline D'> */}
-                <ConsequenceButton onHover = {() => onHover(Displaying.DECLINE_CONS)} onNotHover = {() => onNotHover()} decision={Decision.DECLINE} app={app} link='consequence'>Decline</ConsequenceButton>
-              {/* </ShortcutTooltip> */}
+              <ShortcutTooltip shortcutText='Accept A'>
+                <ConsequenceButton onHover = {() => onHover(Displaying.ACCEPT_CONS)} onNotHover = {() => onNotHover()} decision={Decision.ACCEPT} app={app} link='consequence' shortcutKey='a'>Accept</ConsequenceButton>
+              </ShortcutTooltip>
+              <ShortcutTooltip shortcutText='Decline D'>
+                <ConsequenceButton onHover = {() => onHover(Displaying.DECLINE_CONS)} onNotHover = {() => onNotHover()} decision={Decision.DECLINE} app={app} link='consequence' shortcutKey='d'>Decline</ConsequenceButton>
+              </ShortcutTooltip>
             </div>
         </div>
     </>
