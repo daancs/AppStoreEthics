@@ -1,6 +1,7 @@
 import playerData, { Decision } from "@/backend/Model";
 import Link from "next/link.js";
 import { useRouter } from "next/router";
+import { ShortCut } from "./shortcut";
 
 interface ButtonProps {
     children: React.ReactNode;
@@ -9,6 +10,7 @@ interface ButtonProps {
     app: playerData;
     onHover : () => void;
     onNotHover: () => void;
+    shortcutKey: string;
 }
 
 
@@ -37,6 +39,7 @@ const ConsequenceButton = (props: ButtonProps) => {
 
     return (
         <>
+            <ShortCut shortCutKey={props.shortcutKey} onDo={handleClick}/>
             <Link href={`/${props.link}`}>
                 <button onClick={() => handleClick()} onMouseOver={() => onMouseOver()} onMouseLeave={() => onMouseLeaving()} className={`text-start tracking-wide w-full text-3xl rounded-xl py-2 px-8 hover:bg-slate-400 bg-slate-100 text-black`}>
                     {props.children}

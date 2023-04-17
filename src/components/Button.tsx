@@ -1,6 +1,7 @@
 import playerData from "@/backend/Model";
 import Link from "next/link.js";
 import { useRouter } from "next/router";
+import { ShortCut } from "./shortcut";
 
 interface ButtonProps {
     children: React.ReactNode;
@@ -8,6 +9,7 @@ interface ButtonProps {
     bgColor?: string;
     textColor?: string;
     app: playerData;
+    shortcutKey: string;
 }
 
 
@@ -27,6 +29,7 @@ const Button = (props: ButtonProps) => {
 
     return (
         <>
+            <ShortCut shortCutKey={props.shortcutKey} onDo={handleClick}/>
             <Link href={`/${props.link}`}>
                 <button onClick={() => handleClick()} className={`text-start tracking-wide w-full text-3xl rounded-xl py-2 px-8 hover:bg-slate-400 ${props.bgColor ? props.bgColor : 'bg-slate-100'} ${props.textColor ? props.textColor : 'text-black'}`}>
                     {props.children}
