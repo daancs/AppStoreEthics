@@ -9,7 +9,7 @@ interface IconProps {
 export default function InfoIcon(props: IconProps) {
     return (
          <>
-            <div className="flex items-start p-8">
+            <div className="flex items-center p-8">
                 <div >
                     <GameIcon iconName={props.iconName}/>
                 </div>
