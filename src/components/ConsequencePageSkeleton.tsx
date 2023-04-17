@@ -1,5 +1,5 @@
 import playerData from '@/backend/Model';
-import Button from '@/components/Button'
+import ContinueButton from '@/components/ContinueButton'
 import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
 
@@ -31,10 +31,9 @@ interface ConsequencePageSkeletonProps {
  */
 export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonProps) {
 
-    const app = props.app
-    const currentDecision = app.getCurrentDecision()
-
-    const consequences = app.getCurrentConsequences()
+    const app = props.app;
+    const currentDecision = app.getCurrentDecision();
+    const consequences = app.getCurrentConsequences();
 
   return (
     <>
@@ -55,7 +54,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
             }
         </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 w-full h-full justify-evenly items-center font-mono'>
-                <Button app={app} link={app.isFinished() ? 'endPage' : 'game'} bgColor="bg-primary-button-bg" textColor="text-white">Continue</Button>
+                <ContinueButton app={app} link={app.isFinished() ? 'endPage' : 'game'} bgColor="bg-primary-button-bg" textColor="text-white">Continue</ContinueButton>
             </div>
         </div>
     </>

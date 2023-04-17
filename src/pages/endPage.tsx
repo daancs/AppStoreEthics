@@ -26,22 +26,43 @@ let messageLibrary: Map<GameState, string> = new Map([
 
 
 
+// Decide what message should be displayed
+const app = playerData.getInstance();
+
+console.log(app.getGameState());
+app.printStats();
+
+const tmp_desc = messageLibrary.get(app.getGameState());
+const obj:GameOverProps = {
+  GameOver : app.getGameState() != GameState.WIN,
+  Description : tmp_desc ? tmp_desc : "error" // Description="error" if value does not exist
+}
+
+const headline : string = obj.GameOver ? "Game Over" : "You won!";
+const desc : string = obj.Description;
+
+// Reset game so it can be played again
+playerData.resetInstance();
+
 
 const DisplayEndText : NextPage = () => {
 
-    const router = useRouter()
+    const router = useRouter();
+    console.log("In endPage");
 
     //====== States ======
-    const [displayButton, setDisplayButton] = useState(false)
-    const [startKeyPressed, setStartKeyPressed] = useState(false)
-    const [endKeyPressed, setEndKeyPressed] = useState(false)
+    const [displayButton, setDisplayButton] = useState(false);
+    const [startKeyPressed, setStartKeyPressed] = useState(false);
+    const [endKeyPressed, setEndKeyPressed] = useState(false);
 
     // handles keypresses
     const handleKeyPress = (event: KeyboardEvent) => {
     if (event.key === 'y') {
+          console.log("pressed y");
           setStartKeyPressed(true)
     } else if (event.key === 'n') {
-          setEndKeyPressed(true)
+          console.log("pressed n");
+          setEndKeyPressed(true);
     }
     }
     
@@ -52,22 +73,12 @@ const DisplayEndText : NextPage = () => {
 
     
 
-    // Decide what message should be displayed
-    const app = playerData.getInstance();
-    const tmp_desc = messageLibrary.get(app.getGameState());
+    
+
+    
 
 
-    const obj:GameOverProps = {
-        GameOver : true,
-        Description : tmp_desc ? tmp_desc : "error" // Description="error" if value does not exist
-    }
-
-    const headline : string = obj.GameOver ? "Game Over" : "You won!";
-    const desc : string = obj.Description;
-
-    console.log(app.getGameState());
-
-    playerData.resetInstance()
+    
     
     // Show message
     return (
@@ -78,6 +89,7 @@ const DisplayEndText : NextPage = () => {
           <div className='font-mono m-2 max-w-md'>
             <TypeAnimation cursor={false} style={{whiteSpace: 'pre-line'}} speed={80} sequence={[desc, 1000,
               () => {
+                console.log("animated");
                 setDisplayButton(true)
               }
             ]} />

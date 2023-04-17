@@ -33,6 +33,7 @@ export default class playerData {
         if (playerData.instance) {
             return playerData.instance;
         } else {
+            console.log("created new playerData instance");
             playerData.instance = new playerData();
             return playerData.instance;
         }
@@ -86,6 +87,7 @@ export default class playerData {
     public nextApp(): void {
         console.log("apps array: " + this.apps)
         this.currentApp = this.apps.pop();
+        this.setGameState();
         console.log('next app: ' + this.currentApp?.title);
     }
 
@@ -111,7 +113,7 @@ export default class playerData {
     }
 
     // Prints all stats to console
-    private printStats(): void {
+    public printStats(): void {
         console.log("Reputation: " + this.reputation);
         console.log("Contentment: " + this.contentment);
         console.log("Privacy: " + this.privacy);
@@ -146,8 +148,11 @@ export default class playerData {
                 case Stat.PRIVACY:
                     sum += cons.privacy || 0;
                     break;
-                default:
+                case Stat.REVENUE:
                     sum += cons.revenue || 0;
+                    break;
+                default:
+                    Error ("Invalid stat");
             }
         }
 
@@ -166,8 +171,11 @@ export default class playerData {
             case Stat.PRIVACY:
                 this.privacy = Math.min(100, this.privacy + value);
                 return;
-            default:
+            case Stat.REVENUE:
                 this.revenue = Math.min(100, this.revenue + value);
+                return;
+            default:
+                Error("Invalid stat");
         }
     }
 

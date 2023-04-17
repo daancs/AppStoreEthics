@@ -5,7 +5,8 @@ import playerData from '@/backend/Model';
 const Consequences: NextPage = () => {
 
     const app = playerData.getInstance();
-    app.setGameState();
+    //app.setGameState();
+    console.log("Current game state: " + app.getGameState());
 
     return (
         <>

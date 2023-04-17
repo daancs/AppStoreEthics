@@ -16,13 +16,13 @@ interface ButtonProps {
  * 
  * @returns a button wich links to a page
  */
-const Button = (props: ButtonProps) => {
+const ContinueButton = (props: ButtonProps) => {
 
     const router = useRouter();
 
     const handleClick = () => {
-        props.app.nextApp()
-        router.push(`/${props.link}`)
+        props.app.nextApp();
+        router.push(`/${props.link}`);
     }
 
     return (
@@ -36,4 +36,4 @@ const Button = (props: ButtonProps) => {
     );
 }
 
-export default Button;
+export default ContinueButton;
