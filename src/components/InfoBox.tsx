@@ -13,10 +13,10 @@ export default function InfoBox() {
 
                     <div className="flex items-center justify-center h-full w-full">
                         <div className="flex flex-col items-stretch justify-center h-full cursor-default min-h-[600px] min-w-[450px] max-w-[600px]">     
-                            <InfoIcon iconName={"reputation"} desc={"A company's reputation is the public's perception of the App Store and how it operates"} />
-                            <InfoIcon iconName={"contentment"} desc={"Happiness and satisfaction of the App Store users"} />
+                            <InfoIcon iconName={"reputation"} desc={"Reputation represents the public's perception of the App Store and how it operates"} />
+                            <InfoIcon iconName={"contentment"} desc={"Contentment is the happiness and satisfaction of the App Store users"} />
                             <InfoIcon iconName={"privacy"} desc={"The definition of online privacy is the level of privacy protection an individual has while connected to the internet"} />
-                            <InfoIcon iconName={"revenue"} desc={"Profits and total earnings of App Store define it revenue"} />
+                            <InfoIcon iconName={"revenue"} desc={"Revenue is the profits and total earnings of the App Store"} />
                         </div>
                     </div>
 
