@@ -19,47 +19,29 @@ interface GameIconProps {
     isUnchanged?: boolean; // should background be blue
 }
 
-/** 
- * @todo Make the dots big or small depending on the amount of change that will happen
- */
-
-
 /**
  * Component for the game icon
  * 
  * @returns the an empty icon
  */
 export default function GameIcon(props: GameIconProps) {
-    // const [image, setImage] = useState<StaticImageData>()
-
-    // useEffect(() => {
-    //     console.log("Use effect ran")
-    //     switch (props.label) {
-    //         case "reputation":
-    //             setImage(repImage)
-    //             break;
-    //     }
-    // },[props.label])
-
     const setImage = (label: string) => { 
     switch (label) {
         case 'reputation':
             return repImage
-            break;
         case 'revenue':
             return revImage
-            break;
         case 'privacy':
             return privImage
-            break;
         case 'contentment':
             return conImage
-            break;
+        default: 
+            console.error(`no label ${label}`)
+            return;
     }
 
     }
 
-    //willChange: false, ha en margin, appInd visa pricken, appInd false visa pil
     return (
          <div className='mt-2'>
             <div className={`relative ${props.width ? props.width : 'w-20'} ${props.height ? props.height : 'h-20'} ${props.hoverable ? 'hover:scale-110 hover:cursor-pointer' : ''} ${props.isConsequence ? 'bg-secondary-icon-bg' : 'bg-white'} rounded-xl shadow-xl text-black text-xl transition-all ease-in-out delay-100 overflow-hidden`}>
