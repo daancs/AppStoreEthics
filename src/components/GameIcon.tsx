@@ -50,7 +50,7 @@ export default function GameIcon(props: GameIconProps) {
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
                 </div>
                 <div className='absolute bottom-0 w-full'>
-                    {props.displayProgress ? <ProgressBar value={props.progressValue} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isUnchanged} isChangePos={props.isChangePos}/> : null} 
+                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue)} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isUnchanged} isChangePos={props.isChangePos}/> : null} 
                 </div>
             </div>
         </div>
