@@ -58,7 +58,7 @@ const DisplayEndText : NextPage = () => {
 
 
     const obj:GameOverProps = {
-        GameOver : true,
+        GameOver : app.getGameState() != GameState.WIN,
         Description : tmp_desc ? tmp_desc : "error" // Description="error" if value does not exist
     }
 
