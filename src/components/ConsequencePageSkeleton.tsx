@@ -45,7 +45,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
                 return (
                     <div key={index} className="flex justify-normal items-center mb-5">
                         <div className='mr-5'>
-                            <GameIcon iconName={consequence.con} isConsequence={true}/>
+                            <GameIcon progressValue={50} iconName={consequence.con} isConsequence={true}/>
                         </div>
                         <span className='text-2xl ml-2'>{consequence.text}</span>
                     </div>
