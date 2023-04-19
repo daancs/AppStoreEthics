@@ -88,7 +88,7 @@ export default function GamePageSkeleton( props: GamePageSkeletonProps) {
         {/* <ShortCut shortCutKey='a' to='/consequence'/>
         <ShortCut shortCutKey='d' to='/consequence'/> */}
 
-        <div className={`grid grid-cols-3 grid-rows-6 place-items-center gap-4 w-screen h-screen justify-center bg-cover bg-center bg-primary-bg ${roboto.variable} overflow-hidden`}>
+        <div className={`grid grid-cols-3 grid-rows-6 place-items-center gap-3 w-screen h-screen justify-center bg-cover bg-center bg-primary-bg ${roboto.variable} overflow-hidden`}>
             <AppIndicators sizesToDisplay={sizesToDisplay} app={app}/>
             <div className='flex col-start-3 col-end-3 row-start-1 row-end-1'>
               <InfoButton/>
