@@ -22,7 +22,7 @@ const Home: NextPage =  () => {
     reviewText: "Today, you will review and decide which of the submitted applications will make it to the App Store.\n\n To make an informed decision, you can read a text specification and see a visual representation of the submitted application. \n\n",
     consequencesText: "Make sure to have the four factors in mind when reviewing. Do not let any of them run out or your future at our company will be uncertain.\n\n",
     disclaimerText: "DESIGNER NOTE:\n Keep in mind while playing the game, the design is a reflection of the designers’ values. We aim to create a reflective game that will make the player gain possible insights about ethics in the field of computer science.\nBest regards, \nSix bachelor students in software engineering.",
-    intructionsText: "Instructions........... Done"
+    intructionsText: ""
   }
 
   //====== States ======

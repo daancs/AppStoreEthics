@@ -57,12 +57,6 @@ export default function Flashcard(props: FlashcardProps) {
                                     <br />
                                     <span className='font-bold'>Data-gathering: </span><span>{currentApp?.description.sensitive_data}</span>
                                     <br />
-                                    <span className='font-bold'>Data Usage: </span><span>{currentApp?.description.user_data}</span>
-                                    <br />
-                                    <span className='font-bold'>Location: </span><span>{currentApp?.description.location_services} </span>
-                                    <br />
-                                    <span className='font-bold'>Creator: </span><span>{currentApp?.description.contact_information}</span>
-                                    <br />
                                     <span className='font-bold'>In-app purchases: </span><span>{currentApp?.description.in_app_purchases}</span>
                                     <br />
                                     <span className='font-bold'>Advertisements: </span> <span>{currentApp?.description.advertising}</span>
@@ -70,6 +64,18 @@ export default function Flashcard(props: FlashcardProps) {
                                     <span className='font-bold'>Age rating: </span><span>{currentApp?.description.age_rating}</span>
                                     <br />
                                     <span className='font-bold'>Target group: </span><span>{currentApp?.description.target_group}</span>
+                                    <br />
+                                    <br />
+                                    <div className='text-xl py-3'>
+                                    <span>Data conntected to you:</span>
+                                     </div>
+                                    <span className='font-bold'>Data Usage: </span><span>{currentApp?.description.user_data}</span>
+                                    <br />
+                                    <span className='font-bold'>Location: </span><span>{currentApp?.description.location_services} </span>
+                                    <br />
+                                    <span className='font-bold'>Contact Information: </span><span>{currentApp?.description.contact_information}</span>
+                                    <br />
+                      
                                 </div>
                                 </span>
                           </div>

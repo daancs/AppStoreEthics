@@ -6,14 +6,14 @@ export default function getData(): IApp[] {
             title: "bargain.",
             description: {
                 text: "App where the users can purchase and sell a range of second-hand products, such as shoes, clothes, and furniture. The seller is managing the shipment.",
-                sensitive_data: "yes",
-                user_data: "yes",
-                contact_information: "yes",
-                location_services: "yes",
-                in_app_purchases: "no",
-                advertising: "yes",
+                sensitive_data: "Yes",
+                user_data: "Yes",
+                contact_information: "Yes",
+                location_services: "Yes",
+                in_app_purchases: "No",
+                advertising: "Yes",
                 age_rating: "18+",
-                target_group: "anyone"
+                target_group: "Anyone"
             },
             image_name: "app1_bargain.png",
             accept_cons: [
@@ -57,14 +57,14 @@ export default function getData(): IApp[] {
             title: "SnailChat",
             description: {
                 text: "App where users can chat and send pictures to each other. SnailChat allows users to share their location. To lower the risk of stalking or being pressured to share location constantly, users can pause sharing without sending the other party a notification.",
-                sensitive_data: "yes",
-                user_data: "yes",
-                contact_information: "yes",
-                location_services: "yes",
-                in_app_purchases: "no",
-                advertising: "no",
+                sensitive_data: "Yes",
+                user_data: "Yes",
+                contact_information: "Yes",
+                location_services: "Yes",
+                in_app_purchases: "No",
+                advertising: "No",
                 age_rating: "12+",
-                target_group: "anyone"
+                target_group: "Anyone"
             },
             image_name: "app2_Snailchat.png",
             accept_cons: [
@@ -102,14 +102,14 @@ export default function getData(): IApp[] {
             title: "EyeShare",
             description: {
                 text: "App where users can connect to old and new friends. EyeShare allows users to post their thoughts, location, and images.",
-                sensitive_data: "yes",
-                user_data: "yes",
-                contact_information: "yes",
-                location_services: "yes",
-                in_app_purchases: "no",
-                advertising: "yes",
+                sensitive_data: "Yes",
+                user_data: "Yes",
+                contact_information: "Yes",
+                location_services: "Yes",
+                in_app_purchases: "No",
+                advertising: "Yes",
                 age_rating: "12+",
-                target_group: "anyone"
+                target_group: "Anyone"
             },
             image_name: "app3_EyeShare.png",
             accept_cons: [
@@ -149,14 +149,14 @@ export default function getData(): IApp[] {
             title: "TreasureQuest",
             description: {
                 text: "App where users can complete a treasure hunt. TreasureQuest allows the user to play different and exciting levels.",
-                sensitive_data: "yes",
-                user_data: "no",
-                contact_information: "no",
-                location_services: "no",
-                in_app_purchases: "yes",
-                advertising: "yes",
+                sensitive_data: "Yes",
+                user_data: "No",
+                contact_information: "No",
+                location_services: "No",
+                in_app_purchases: "Yes",
+                advertising: "Yes",
                 age_rating: "0+",
-                target_group: "anyone"
+                target_group: "Anyone"
             },
             image_name: "app4_TreasureQuest.png",
             accept_cons: [
@@ -194,14 +194,14 @@ export default function getData(): IApp[] {
             title: "Qme",
             description: {
                 text: "App where users can ask each other questions to exchange knowledge and information about a subject. The users can choose to be anonymous.",
-                sensitive_data: "no",
-                user_data: "no",
-                contact_information: "no",
-                location_services: "no",
-                in_app_purchases: "no",
-                advertising: "yes",
+                sensitive_data: "No",
+                user_data: "No",
+                contact_information: "No",
+                location_services: "No",
+                in_app_purchases: "No",
+                advertising: "Yes",
                 age_rating: "0+",
-                target_group: "anyone"
+                target_group: "Anyone"
             },
             image_name: "app5_Qme.png",
             accept_cons: [
