@@ -46,6 +46,7 @@ export default function GameIcon(props: GameIconProps) {
 
     }
 
+
     return (
          <div className={`mt-2 ${props.hoverable ? 'hover:scale-110' : ''}`}>
             <ShortcutTooltip shortcutText={props.iconTitle} consIcon={!props.hoverable}>
@@ -55,7 +56,7 @@ export default function GameIcon(props: GameIconProps) {
                     <Image src={setImage(props.iconName) ?? ""} alt='icon image'/>
                 </div>
                 <div className='absolute bottom-0 w-full'>
-                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue) || 50} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isUnchanged} isChangePos={props.isChangePos}/> : null} 
+                    {props.displayProgress ? <ProgressBar value={Number(props.progressValue)} parentHeight={`${props.height ? props.height : '20'}`} gamePage={props.isUnchanged} isChangePos={props.isChangePos}/> : null} 
                 </div>
                
             </div>

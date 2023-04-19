@@ -22,7 +22,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({value, parentHeight, gamePage,
      * Converting tailwindcss 'h-' to px
      */
     const progressBarHeight = `${4 * (value/100) * Number(parentHeight.replace("h-",""))}px`;
-  
+    console.log("Progressbarheight: " + progressBarHeight);
     return (
         <div>
             <div style={{height: progressBarHeight, backgroundColor: getColor()}}/>
