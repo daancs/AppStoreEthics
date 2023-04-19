@@ -16,7 +16,7 @@ export default function ConsIndicator(prop: Indicator){
     return (
     <div className="flex direction flex-col items-center">
         <Arrow pointUp={isChangePos} visible={hasChanged}/>
-        <GameIcon iconName={prop.name} isUnchanged={!hasChanged} progressValue={prop.value} displayProgress={true} hoverable={false} isChangePos={isChangePos}/>
+        <GameIcon iconName={prop.name} isUnchanged={!hasChanged} progressValue={prop.value} displayProgress={true} hoverable={false} isChangePos={isChangePos} iconTitle={""}/>
         <span>{UpperCaseStr}</span>
     </div>
     );
