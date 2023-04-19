@@ -1,8 +1,6 @@
 import playerData from '@/backend/Model';
 import GamePageSkeleton from '@/components/GamePageSkeleton';
-import { NextPage } from 'next'
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 /**
  * The first game page of the application. Here the player can see the card and flip it,

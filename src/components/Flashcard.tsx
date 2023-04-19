@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import mySpyImage from 'src/images/mySpy.png';
 import { IApp } from '@/backend/content/IApp';
 import { ShortCut } from './shortcut';
 import ShortcutTooltip from './ShortcutTooltip';
