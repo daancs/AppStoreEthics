@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 interface ShortcutTooltipProps {
   shortcutText: string,
-  children: any,
+  children?: React.ReactNode,
+  consIcon?: boolean,
 }
 
 /**
@@ -22,7 +23,7 @@ const ShortcutTooltip = (props: ShortcutTooltipProps) => {
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       {props.children}
-      {showTooltip && <span className='text-white flex absolute py-0'>
+      {showTooltip && <span className={`text-white absolute flex py-0 ${props.consIcon ? 'hidden' : ''}`}>
         {props.shortcutText}
       </span>}
     </div>

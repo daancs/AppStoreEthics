@@ -1,5 +1,3 @@
-import GameIcon from "./GameIcon";
-import Arrow from "./Arrow";
 import playerData, { Decision } from "@/backend/Model";
 import ConsIndicator from "./ConsIndicator";
 
