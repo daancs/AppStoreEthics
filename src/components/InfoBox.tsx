@@ -1,6 +1,6 @@
 import InfoIcon from "./InfoIcon"
 
-
+// Should pop up when the player clicks on InfoButton
 export default function InfoBox() {
     return (
         <>

@@ -1,7 +1,7 @@
 import playerData, { Decision } from "@/backend/Model";
 import Link from "next/link.js";
 import { useRouter } from "next/router";
-import { ShortCut } from "./shortcut";
+import { ShortCut } from "./Shortcut";
 
 interface ButtonProps {
     children: React.ReactNode;

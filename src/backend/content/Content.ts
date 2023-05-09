@@ -1,5 +1,7 @@
 import { IApp } from "./IApp";
 
+// Put content of all apps here 
+// Call at initalization to generate game content
 export default function getData(): IApp[] {
     return [
         {

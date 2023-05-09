@@ -15,6 +15,7 @@ const Game = () => {
   const router = useRouter();
   
   
+  // If the game is over, the end page is loaded
   if (app.isFinished()) {
     console.log('game ended');
     router.push('/endPage');
