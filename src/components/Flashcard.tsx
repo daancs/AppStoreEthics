@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { IApp } from '@/backend/content/IApp';
-import { ShortCut } from './shortcut';
+import { ShortCut } from './Shortcut';
 import ShortcutTooltip from './ShortcutTooltip';
 
 

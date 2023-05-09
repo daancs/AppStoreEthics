@@ -1,5 +1,5 @@
 import playerData from '@/backend/Model';
-import Button from '@/components/Button'
+import ContinueButton from '@/components/ContinueButton'
 import GameIcon from '@/components/GameIcon';
 import { Roboto_Mono } from '@next/font/google'
 
@@ -55,7 +55,7 @@ export default function ConsequencePageSkeleton(props: ConsequencePageSkeletonPr
         </div>
             <div className='flex col-start-2 col-end-2 row-start-6 row-end-6 w-full h-full justify-evenly items-center font-mono'>
                 <ShortcutTooltip shortcutText='Continue Enter'>
-                    <Button app={app} link='game' bgColor="bg-primary-button-bg" textColor="text-white" shortcutKey='Enter'>Continue</Button>
+                    <ContinueButton app={app} link='game' bgColor="bg-primary-button-bg" textColor="text-white" shortcutKey='Enter'>Continue</ContinueButton>
                 </ShortcutTooltip>
             </div>
         </div>

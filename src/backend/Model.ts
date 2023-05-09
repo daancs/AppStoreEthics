@@ -18,6 +18,7 @@ enum Stat {
     REVENUE,
 }
 
+// Use to represent the latest chosen decision
 export enum Decision {
     ACCEPT,
     DECLINE,
@@ -29,6 +30,7 @@ export default class playerData {
 
     static instance: playerData | null;
 
+    // Singleton pattern
     static getInstance() {
         if (playerData.instance) {
             return playerData.instance;
@@ -42,6 +44,8 @@ export default class playerData {
         playerData.instance = null;
     }
 
+    // Stats, remaining apps, current app and latest chosen decision 
+    // All stats go between 0 and 100
     private reputation: number;
     private contentment: number;
     private privacy: number;
@@ -70,6 +74,7 @@ export default class playerData {
         return this.shuffle(data);
     }
 
+    // Use to chuffle the game content
     private shuffle(arr: any[]): any[] {
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1)); // 0 <= j <= i
@@ -191,12 +196,8 @@ export default class playerData {
         return this.revenue;
     }
 
-    public getConsequences(decision: Decision): IConsequence[] {
-        if (this.currentApp === undefined) {
-            throw new Error('currentApp is undefined');
-        }
-        const consequences: IConsequence[]  = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
-        return consequences;
+    public getGameState(): GameState {
+        return this.gameState;
     }
 
     public getCurrentApp(): IApp | undefined {
@@ -212,6 +213,19 @@ export default class playerData {
 
     public getCurrentConsequences() {
         return this.getConsequences(this.getCurrentDecision());
+    }
+
+
+    /* If currentApp is not undefined:
+       getConsequences(ACCEPT) -> return list of consequences if accepting the current app
+       getConsequences(DECLINE) -> return list of consequences if declining the current app
+     */
+    public getConsequences(decision: Decision): IConsequence[] {
+        if (this.currentApp === undefined) {
+            throw new Error('currentApp is undefined');
+        }
+        const consequences: IConsequence[]  = decision === Decision.ACCEPT ? this.currentApp?.accept_cons : this.currentApp?.decline_cons;
+        return consequences;
     }
 
 
@@ -259,9 +273,7 @@ export default class playerData {
         }
     }
 
-    public getGameState(): GameState {
-        return this.gameState;
-    }
+    
 
     // Returns true if game is over 
     public isFinished(): boolean {

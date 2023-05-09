@@ -1,3 +1,4 @@
+// Description of an app
 export interface IApp{
     title: string,
     description:{
@@ -18,6 +19,9 @@ export interface IApp{
 }
 
 
+// Each consequence can affect one or more stats 
+// If several stats are affected, con should be the stat that is mostly affected
+// con should be "revenue", "contentment", "privacy" or "revenue"
 export interface IConsequence{
     text: string,
     con: string,
