@@ -34,7 +34,7 @@ Pages:
 ### *Backend*
 The backend is written in **Typescript** and purely contains game-logic and data for the game. The apps are currently hard-coded but type-safe and easy to extend with more apps if needed. The backend keeps track of the games current state and the apps and values for the four factors of the game. The following image represents the backend: 
 
-![imageOfBacken](src/backend_diagram.png)
+![imageOfBacken](src/uml_backend.png)
 
 
 
